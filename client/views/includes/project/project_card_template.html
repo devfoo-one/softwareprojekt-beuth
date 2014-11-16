@@ -1,13 +1,19 @@
 <!--Template for the Projects shown on the Dashboard -->
 <template name="projectCard" >
     <div class="card">
-        {{projectTitle}}
+        <div id="ProjectTitle">
+            {{projectTitle}}
+        </div>
+         <div id="ProjectTitle">
+             {{projectManager}} 
+        </div>
+       <!--Weitere project details
         {{projectTimePeriod}}
         {{porjectClient}}
         {{projectSponsor}}
         {{projectContractNumber}}
         {{projectStartDate}}
         {{projectEndDate}}
-        {{projectManager}}      
+        -->   
     </div>
 </template>
