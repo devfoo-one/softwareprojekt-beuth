@@ -1,0 +1,15 @@
+<template name="dashboard">
+    <div class="showProject">
+        <!--iterates over every object inside the 'projects'-collection-->
+        {{#each projects}}
+            {{>projectCard}}
+        {{/each}}
+    </div>
+
+    <div class="addProject">
+        <button name="add" type="button">
+
+        </button>
+
+    </div>
+</template>
