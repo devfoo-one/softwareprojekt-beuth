@@ -1,0 +1,25 @@
+<!--Template for the Projects shown on the Dashboard -->
+<template name="projectCard" >
+    <div class="card">
+        <div class="projectTitle">
+            {{title}}
+        </div>
+         <div class="projectManager">
+             {{projectManager}} 
+        </div>
+       <!--Weitere project details
+        {{timePeriod}}
+        {{client}}
+        {{sponsor}}
+        {{contractNumber}}
+        {{startDate}}
+        {{endDate}}
+        --> 
+        <button name="editProjectButton" type="button" class="editButton">
+            <img src="/icons/edit.png">
+        </button>  
+         <button name="deleteProjectButton" type="button" class="deleteButton">
+            <img src="/icons/delete.png">
+        </button> 
+    </div>
+</template>
