@@ -1,3 +1,6 @@
 # ignore the restore files linux creates
 *.*~
+
+# ignore IntelliJs IDE files
 .idea
+
