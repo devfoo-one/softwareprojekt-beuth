@@ -1,30 +1,30 @@
 <!--Template for the Projects shown on the Dashboard -->
 <template name="projectCard" >
-  <div class="projectCard panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title projectTitle"> {{title}}</h3>
-      <span class="pull-right header-button">
-        <a class="glyphicon glyphicon-trash" href="insertDeleteHere"></a>
-      </span>
-      <span class="pull-right header-button">
-        <a class="glyphicon glyphicon-pencil" href="{{pathFor 'editProjectPage'}}"></a>
-      </span>
+    <div class="projectCard panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title projectTitle"> {{title}}</h3>
+            <span class="pull-right header-button">
+                <a class="glyphicon glyphicon-trash" href="insertDeleteHere"></a>
+            </span>
+            <span class="pull-right header-button">
+                <a class="glyphicon glyphicon-pencil" href="{{pathFor 'editProjectPage'}}"></a>
+            </span>
+        </div>
+        <div class="panel-body">
+            <div class="projectManager">
+                {{projectManager}}
+            </div>
+            <div class="projectDescription">
+                {{description}}
+            </div>
+            <!--Weitere project details
+            {{timePeriod}}
+            {{client}}
+            {{sponsor}}
+            {{contractNumber}}
+            {{startDate}}
+            {{endDate}}
+        -->
     </div>
-    <div class="panel-body">
-      <div class="projectManager">
-        {{projectManager}}
-      </div>
-      <div class="projectDescription">
-        {{description}}
-      </div>
-      <!--Weitere project details
-      {{timePeriod}}
-      {{client}}
-      {{sponsor}}
-      {{contractNumber}}
-      {{startDate}}
-      {{endDate}}
-    -->
-    </div>
-  </div>
+</div>
 </template>

@@ -1,15 +1,15 @@
 <template name="dashboard">
-    <div class="row-fluid showProject">
-        <!--iterates over every object inside the 'projects'-collection-->
-        {{#each projects}}
-            {{>projectCard}}
-        {{/each}}
-    </div>
-
-    <div class="addProject">
-        <a class="btn">
-            <img src="/icons/add.png">
-        </a>
-
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <button class="btn btn-success navbar-btn navbar-right">add new project</button>
+        </div>
+    </nav>
+    <div class="row-fluid">
+        <div class="showProjects">
+            <!--iterates over every object inside the 'projects'-collection-->
+            {{#each projects}}
+                {{>projectCard}}
+            {{/each}}
+        </div>
     </div>
 </template>
