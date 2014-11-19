@@ -1,12 +1,13 @@
 <template name="layout">
-  <div class="container-fluid">
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="{{pathFor 'dashboard'}}">StaffingBoard</a>
-      </div>
-    </nav>
-    <div id="main" class="row-fluid">
-      {{> yield}}
+    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{pathFor 'dashboard'}}">StaffingBoard</a>
+            </div>
+        </nav>
+        <div id="main" class="row-fluid">
+            {{> yield}}
+        </div>
     </div>
-  </div>
+    {{> generalWarningDialog}}
 </template>
