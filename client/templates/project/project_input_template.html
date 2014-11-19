@@ -1,10 +1,16 @@
 <template name="projectInput" >
     <div class="inputFields">
-        <label for="titleInput">Titel: </label>
-        <input type="text" id="titleInput" value="{{title}}">
-        <label for="managerInput">Manager: </label>
-        <input type="text" id="managerInput" value="{{projectManager}}">
-        <label for="descriptionInput">Beschreibung: </label>
-        <input type="text" id="descriptionInput" value="{{description}}">
+        <div class="form-group">
+            <label for="titleInput">Titel: </label>
+            <input class="form-control" type="text" id="titleInput" value="{{title}}">
+        </div>
+        <div class="form-group">
+            <label for="managerInput">Manager: </label>
+            <input class="form-control" type="text" id="managerInput" value="{{projectManager}}">
+        </div>
+        <div class="form-group">
+            <label for="descriptionInput">Beschreibung: </label>
+            <textarea class="form-control" rows="3" id="descriptionInput">{{description}}</textarea>
+        </div>
     </div>
 </template>
