@@ -1,7 +1,17 @@
 .projectCard {
     width: 23em;
+    height: 10em;
     float: left;
     margin: 10px;
+    overflow: hidden;
+}
+
+.projectCard .panel-body {
+    overflow: hidden;
+}
+
+.projectCard .panel-heading {
+    /*height: 2.5em;*/
 }
 
 .projectCard .panel-heading a {
@@ -9,7 +19,7 @@
     color: inherit;
 }
 
-.panel-heading span
+.projectCard .panel-heading span
 {
     margin-top: -23px;
     font-size: 15px;
