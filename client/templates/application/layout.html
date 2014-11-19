@@ -1,10 +1,10 @@
 <template name="layout">
-  <div class="container">
-    <header class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="{{pathFor 'dashboard'}}">StaffingBoard</a>
+  <div class="container-fluid">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{pathFor 'dashboard'}}">StaffingBoard</a>
       </div>
-    </header>
+    </nav>
     <div id="main" class="row-fluid">
       {{> yield}}
     </div>

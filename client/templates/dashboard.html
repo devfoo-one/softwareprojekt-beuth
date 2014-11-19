@@ -1,15 +1,35 @@
 <template name="dashboard">
-    <div class="showProject">
-        <!--iterates over every object inside the 'projects'-collection-->
-        {{#each projects}}
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <button title="Neues Projekt anlegen" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#addNewProjectModal">add new project</button>
+        </div>
+    </nav>
+    <div class="row-fluid">
+        <div class="showProjects">
+            <!--iterates over every object inside the 'projects'-collection-->
+            {{#each projects}}
             {{>projectCard}}
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
 
-    <div class="addProject">
-        <a class="btn">
-            <img src="/icons/add.png">
-        </a>
-
-    </div>
+    <div id="addNewProjectModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">add new project</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="addNewProjectForm" role="form">
+                    {{> projectInput}}
+                    <div class="form-group">
+                        <button class="btn btn-primary submitNewProject" type="submit">Save Changes</button>
+                        <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                    </div>
+                </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </template>

@@ -1,0 +1,23 @@
+.projectCard {
+    width: 23em;
+    float: left;
+    margin: 10px;
+}
+
+.projectCard .panel-heading a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.panel-heading span
+{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+
+.projectCard .header-button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+}
