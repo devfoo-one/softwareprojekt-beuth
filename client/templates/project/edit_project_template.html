@@ -1,12 +1,9 @@
 <template name="editProjectPage" >
-    <div class="inputFields">
+    <form role="form">
         {{> projectInput}}
-
-        <button>
-            Speichern
-        </button>  
-         <a href="{{pathFor 'dashboard'}}">
-            zurück
-        </a> 
-    </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+             <a class="btn btn-default" href="{{pathFor 'dashboard'}}">Cancel</a>
+        </div>
+    </form>
 </template>
