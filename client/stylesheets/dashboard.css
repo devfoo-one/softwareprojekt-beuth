@@ -17,6 +17,7 @@
 }
 
 .projectCard .header-button {
+    cursor: pointer;
     display: inline-block;
     padding: 6px 12px;
 }
