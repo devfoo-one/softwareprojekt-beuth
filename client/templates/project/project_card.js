@@ -5,8 +5,12 @@ Template.projectCard.events = {
         var onOK = function() {
             Projects.remove(_this._id);
         }
+        var buttonLabels = { 
+            ok: "Delete", 
+            cancel: "Cancel"
+        };
         var warningHeader = "Delete project '" + _this.title + "' ?";
         var warningMessage = "Are you sure you want to delete the project '" + _this.title + "'? This cannot be undone!";
-        showWarning(warningHeader, warningMessage, onOK);
+        showWarning(warningHeader, warningMessage, onOK, buttonLabels);
     }
 }
