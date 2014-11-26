@@ -18,3 +18,26 @@ if (Projects.find().count() === 0) {
         description: 'JUST EAT THEM ALL!!!'
     });
 }
+
+// if the employees collection is empty, provide some default data
+if (Employees.find().count() === 0) {
+    Employees.insert({
+        managerID: null, // id of user that is able to manage this Employees
+        firstName: 'Bender',
+        lastName: 'Rodriguez',
+        eMail: 'benderrodriguez@devfoo.de',
+        skills: ['drinking','bending'],
+        type: 'contract',
+        workTime: 100
+    });
+
+    Employees.insert({
+        managerID: null,
+        firstName: 'Hubert',
+        lastName: 'Farnsworth',
+        eMail: 'hubertfarnsworth@devfoo.de',
+        skills: ['science','sleeping'],
+        type: 'freelance',
+        workTime: 50
+    });
+}

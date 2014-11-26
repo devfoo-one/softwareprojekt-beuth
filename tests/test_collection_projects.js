@@ -1,4 +1,5 @@
-//tests/posts.js
+// tests collection 'Projects'
+
 var assert = require('assert');
 
 suite('Projects', function() {
