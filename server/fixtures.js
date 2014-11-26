@@ -19,10 +19,10 @@ if (Projects.find().count() === 0) {
     });
 }
 
-// if the stakeholder collection is empty, provide some default data
-if (Stakeholders.find().count() === 0) {
-    Stakeholders.insert({
-        managerID: null, // id of user that is able to manage this Stakeholder
+// if the employees collection is empty, provide some default data
+if (Employees.find().count() === 0) {
+    Employees.insert({
+        managerID: null, // id of user that is able to manage this Employees
         firstName: 'Bender',
         lastName: 'Rodriguez',
         eMail: 'benderrodriguez@devfoo.de',
@@ -31,7 +31,7 @@ if (Stakeholders.find().count() === 0) {
         workTime: 100
     });
 
-    Stakeholders.insert({
+    Employees.insert({
         managerID: null,
         firstName: 'Hubert',
         lastName: 'Farnsworth',

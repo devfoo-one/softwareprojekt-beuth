@@ -1,11 +1,11 @@
-// tests collection 'Stakeholders'
+// tests collection 'Employees'
 
 var assert = require('assert');
 
-suite('Stakeholders', function() {
-    test('insert new stakeholder', function(done, server) {
+suite('Employees', function() {
+    test('insert new employee', function(done, server) {
         server.eval(function() {
-            Stakeholders.insert({
+            Employees.insert({
                 managerID: null,
                 firstName: 'Test',
                 lastName: 'Test',
@@ -14,7 +14,7 @@ suite('Stakeholders', function() {
                 type: 'contract',
                 workTime: 100
             });
-            var docs = Stakeholders.find().fetch();
+            var docs = Employees.find().fetch();
             emit('docs', docs);
         });
         

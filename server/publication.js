@@ -2,6 +2,6 @@ Meteor.publish('projects', function() {
     return Projects.find() ;
 });
 
-Meteor.publish('stakeholders', function() {
-    return Stakeholders.find();
+Meteor.publish('employees', function() {
+    return Employees.find();
 });
