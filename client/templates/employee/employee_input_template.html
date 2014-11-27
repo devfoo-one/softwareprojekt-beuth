@@ -1,0 +1,28 @@
+<template name="employeeInput" >
+    <div class="inputFields">
+        <div class="form-group">
+            <label for="firstNameInput">Firstname:</label>
+            <input class="form-control" type="text" id="firstNameInput" value="{{firstName}}">
+        </div>
+        <div class="form-group">
+            <label for="lastNameInput">Lastname:</label>
+            <input class="form-control" type="text" id="lastNameInput" value="{{lastName}}">
+        </div>
+        <div class="form-group">
+            <label for="eMailInput">E-Mail:</label>
+            <input class="form-control" type="text" id="eMailInput" value="{{eMail}}">
+        </div>
+        <div class="form-group">
+            <label for="contractTypeInput">Contract Type:</label>
+            <input class="form-control" type="text" id="contractTypeInput" value="{{type}}">
+        </div>
+        <div class="form-group">
+            <label for="workTimeInput">Work Time (%):</label>
+            <input class="form-control" type="text" id="workTimeInput" value="{{worktime}}">
+        </div>
+        <div class="form-group">
+            <label for="skillsInput">Skills (separated by commas):</label>
+            <textarea class="form-control" rows="3" id="skillsInput">{{skills}}</textarea>
+        </div>
+    </div>
+</template>
