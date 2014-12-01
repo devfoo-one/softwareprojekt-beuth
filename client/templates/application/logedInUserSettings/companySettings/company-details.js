@@ -1,4 +1,4 @@
-Template.companyDetails.events({
+Template.settingsDialog.events({
     'submit form': function(e) {
         e.preventDefault();
         var companyName = $(e.target).find('#companyNameInput').val();
