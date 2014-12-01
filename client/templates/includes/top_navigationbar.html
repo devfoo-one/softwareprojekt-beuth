@@ -13,7 +13,9 @@
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     {{> loginButtons}}
-                    {{> settings}}
+                    {{#if currentUser}}
+                        {{> settings}}
+                    {{/if}}
                 </ul>
             </div>
         </div>
