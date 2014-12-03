@@ -5,14 +5,7 @@
         <div class="panel-heading">
             <h3 class="panel-title employeeName">{{firstName}} {{lastName}}</h3>
             <span title="Delete" class="pull-right header-button employeeDeleteButton glyphicon glyphicon-trash"></span>
-            <span title="Edit" class="pull-right header-button">
-                <!-- <a class="glyphicon glyphicon-pencil" href="{{pathFor 'editEmployeePage'}}"></a> -->
-                <a class="glyphicon glyphicon-pencil" href="#"></a>
-            </span>
-            <!--
-            there is a litte optical offset between pencil and trash because pencil still is a link.
-            after we removed that link and switched to a modal edit dialog this will be fine.
-            -->
+            <span title="Edit" class="pull-right header-button employeeEditButton glyphicon glyphicon-pencil"></span>
         </div>
         <div class="panel-body">
             <div class="eMail">
