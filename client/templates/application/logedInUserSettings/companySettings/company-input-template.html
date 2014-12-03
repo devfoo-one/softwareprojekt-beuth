@@ -2,12 +2,12 @@
     <div class="inputFields">
         <div class="form-group">
             <label for="companyNameInput">Company Name: </label>
-            <input class="form-control" type="text" id="companyNameInput" value="{{profile.companyName}}">
+            <input class="form-control" type="text" id="companyNameInput" value="{{companyName}}">
         </div>
         <div class="form-group">
             <label for="companyLogoInput">Company Logo: </label>
-            <!--<img id="logoPreview" class="thumbnail" src="{{profile.companyLogo}}" /> -->
-            <input id="companyLogoInput"  type="file" value="{{companyLogo}}">
+             <img id="uploadPreview" src="{{companyLogo}}" alt="Preview Logo">
+            <input id="companyLogoInput"  type="file" value="">
         </div>
     </div>
 </template>

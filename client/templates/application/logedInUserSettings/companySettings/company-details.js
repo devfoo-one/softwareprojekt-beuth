@@ -1,7 +1,31 @@
-/*Templates.companyInput.helpers({
 
-    $("#logoPreview").val() = Meteor.user().profile.companyLogo;
+//TODO images preview before upload + display the company logo if there is already saved one
+/* Template.companyInput.helpers({
+    previewLogo: function(){
+    
+       
+            var oFReader = new FileReader();
+            document.getElementById("companyLogoInput").onChange = function(){
+                oFReader.readAsDataURL(document.getElementById("companyLogoInput").files[0]);
+            }
+            var src;
+            oFReader.onload = function (oFREvent) {
+               src = oFREvent.target.result;
+            };
+        return src;       
+    }
+    
 });*/
+
+
+Template.companyDetails.events = {
+    'click #companyDetailsLink' : function() {
+        var data = Meteor.user().profile;
+        console.log(data);
+        // render Template into "Edit Employee" Modal Dialog
+        Blaze.renderWithData(Template.companyInput, data, $("#companyDetailsInsert").get(0));
+    }
+}
 
 Template.settingsDialog.events({
     'submit form': function(e, template) {
@@ -17,11 +41,10 @@ Template.settingsDialog.events({
             Meteor.users.update(
                 {_id:Meteor.user()._id},
                 {$set:{"profile.companyLogo": companyLogo}}
-            );
-            $(e.target).find('img').attr('src', e.target.result);
+            );           
         }
-        reader.readAsDataURL(companyLogo);
         e.target.reset();
+        $('#companyDetailsInsert').empty();
         $('#setCompanyDetails').modal('hide');
     },
     
