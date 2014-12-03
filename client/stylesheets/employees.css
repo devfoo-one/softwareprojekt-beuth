@@ -1,0 +1,33 @@
+.employeeCard {
+    width: 23em;
+    height: 10em;
+    float: left;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.employeeCard .panel-body {
+    overflow: hidden;
+}
+
+.employeeCard .panel-heading {
+    /*height: 2.5em;*/
+}
+
+.employeeCard .panel-heading a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.employeeCard .panel-heading span
+{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+
+.employeeCard .header-button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+}

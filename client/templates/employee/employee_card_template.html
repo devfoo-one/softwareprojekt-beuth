@@ -1,0 +1,25 @@
+<!--Template for the Employees shown on the Dashboard -->
+
+<template name="employeeCard">
+    <div class="employeeCard panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title employeeName">{{firstName}} {{lastName}}</h3>
+            <span title="Delete" class="pull-right header-button employeeDeleteButton glyphicon glyphicon-trash"></span>
+            <span title="Edit" class="pull-right header-button employeeEditButton glyphicon glyphicon-pencil"></span>
+        </div>
+        <div class="panel-body">
+            <div class="eMail">
+                {{eMail}}
+            </div>
+            <div class="skills">
+                {{skills}}
+            </div>
+            <div class="type">
+                {{type}}
+            </div>
+            <div class="worktime">
+                {{worktime}}
+            </div>
+    </div>
+</div>
+</template>
