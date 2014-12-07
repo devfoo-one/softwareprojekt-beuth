@@ -41,3 +41,20 @@ if (Employees.find().count() === 0) {
         workTime: 50
     });
 }
+
+//// if the engagements collection is empty, provide some default data
+if (Engagements.find().count() === 0) {
+    Engagements.insert({
+        projectID: null,
+        employeeID: null,
+        startDate: new Date(14,06,15),
+        endDate: new Date(14,07,15)
+    });
+
+    Engagements.insert({
+        employeeID: null,
+        projectID: null,
+        startDate: new Date(28,06,15),
+        endDate: new Date(28,07,15)
+    });
+}
