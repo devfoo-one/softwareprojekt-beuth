@@ -21,5 +21,4 @@ Template.dashboard.events({
     'click .cancelModalButton': function(e) {
         $(e.target).closest('.modal').modal('hide');
     }
-
 });
