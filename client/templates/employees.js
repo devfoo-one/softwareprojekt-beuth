@@ -1,8 +1,23 @@
 /*Template Manager for Employees*/
 
+Template.employees.rendered = function(){
+        $('#editEmployeeModal').on('hide.bs.modal', function (e) {
+            /*
+            clear session variable when dialog is hiding.
+            i´m not really shure why this is neccessary,
+            but leaving it set causes data display errors (empty fields...)
+            */
+            Session.set('employees.employeeToEdit', null);
+        });
+    };
+
+
 Template.employees.helpers({
     employees: function() {
         return Employees.find();
+    },
+    editEmployee: function() {
+        return Session.get('employees.employeeToEdit');
     }
 });
 
@@ -56,18 +71,6 @@ Template.employees.events({
             { _id: _id },
             { $set: employee }
         );
-        e.target.reset();
-        // remove template inserted by Blaze.renderWithData() from within an employee-card
-        // otherwise the next click on edit would render another form below the old one.
-        $('#editEmployeeFormInsert').empty();
         $('#editEmployeeModal').modal('hide');
-    },
-
-    'click .cancelEditEmployee': function(e) {
-        $('#editEmployeeFormInsert').empty();
-        $(e.target).closest('.modal').modal('hide');
     }
-
-
-
 });
