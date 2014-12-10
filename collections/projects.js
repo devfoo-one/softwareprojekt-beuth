@@ -37,5 +37,29 @@ Meteor.methods({
         /** TODO: Maybe check if the user is the creator of the project. */
         
         Projects.remove(projectId);
+    },
+    
+    // this method updates a project in the database
+    updateProject: function(projectAttributes) {
+        var user = Meteor.user();
+        
+        // ensure that the user is logged in
+        if (!user)
+            throw new Meteor.Error(401, "You need to be logged in to edit a project!");
+        
+        // make sure the client passed us an Id
+        if (!projectAttributes._id)
+            throw new Meteor.Error(422, "Client passed invalid data. (Id is missing)");
+            
+        /** TODO: Make sure the user is the creator of the project he is trying to delete. */
+            
+        // pick only the attributes we need and create a project database entry
+        var project = _.pick(projectAttributes, 'title', 'projectManager', 'description');
+        
+        Projects.update(
+            { _id: projectAttributes._id }, // query
+            { $set: project }
+        );
     }
 });
+
