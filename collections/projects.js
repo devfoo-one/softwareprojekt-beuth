@@ -14,12 +14,11 @@ Meteor.methods({
             throw new Meteor.Error(422, "Please fill in a title!");
         
         // create the project database entry
-        var project = {
-            title: projectAttributes.title,
-            projectManager: projectAttributes.projectManager,
-            description: projectAttributes.description,
+        var project = _.pick(projectAttributes, 'title', 'projectManager', 'description');
+        
+        project = _.extend(project, {
             creatorId: user._id
-        };
+        });
         
         // write the project to the database
         var projectId = Projects.insert(project);
