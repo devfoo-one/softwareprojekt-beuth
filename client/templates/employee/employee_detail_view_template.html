@@ -1,0 +1,49 @@
+<template name="employeeDetailView">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>User Details</strong></div>
+                <div class="panel-body">
+                    <strong>Name: </strong>{{firstName}} {{lastName}}<br/>
+                    <strong>E-Mail: </strong>{{eMail}}<br/>
+                    <strong>Contract Type: </strong>{{type}}<br/>
+                    <strong>Work Time: </strong>{{workTime}}<br/>
+                    <strong>Skills: </strong>{{skills}}<br/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Assignments</strong></div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>foo</td>
+                                    <td>foo</td>
+                                    <td>foo</td>
+                                </tr>
+                                <tr>
+                                    <td>foo</td>
+                                    <td>foo</td>
+                                    <td>foo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <a class="btn btn-default pull-right" href="{{pathFor 'employees'}}">Back</a>
+        </div>
+    </div>
+</template>
