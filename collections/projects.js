@@ -25,7 +25,8 @@ Meteor.methods({
         
         return projectId;
     },
-    
+
+
     // this method deletes a project from the database
     deleteProject: function(projectId) {
         var user = Meteor.user();
@@ -38,7 +39,8 @@ Meteor.methods({
         
         Projects.remove(projectId);
     },
-    
+
+
     // this method updates a project in the database
     updateProject: function(projectAttributes) {
         var user = Meteor.user();

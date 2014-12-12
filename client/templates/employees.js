@@ -25,15 +25,16 @@ Template.employees.events({
     'submit #addNewEmployeeForm': function(e) {
         e.preventDefault();
 
-        skillsInput = $(e.target).find('#skillsInput').val();
-        skillsArray = skillsInput.split(',');
+        // parse the skills into an array
+        var skillsInput = $(e.target).find('#skillsInput').val();
+        var skillsArray = skillsInput.split(',');
         //remove whitespace arround skills
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
 
+        // collect information about the employee
         var newEmployee = {
-            managerID: Meteor.user()._id,
             firstName: $(e.target).find('#firstNameInput').val(),
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
@@ -41,9 +42,17 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
-        Employees.insert(newEmployee);
-        e.target.reset();
-        $('#addNewEmployeeModal').modal('hide');
+    
+        // call a method on the server to create the employee 
+        Meteor.call('createEmployee', newEmployee, function(error) {
+            if (error)
+                return alert(error.reason);
+
+            // reset the dialog
+            e.target.reset();
+            $('#addNewEmployeeModal').modal('hide');
+        });
+
     },
 
     'click .cancelModalButton': function(e) {
@@ -52,13 +61,17 @@ Template.employees.events({
 
     'submit #editEmployeeForm': function(e) {
         e.preventDefault();
-        var _id = $(e.target).find('#objectID').val()
-        skillsInput = $(e.target).find('#skillsInput').val();
-        skillsArray = skillsInput.split(',');
+        
+        var _id = $(e.target).find('#objectID').val();
+
+        // parse the skills into an array
+        var skillsInput = $(e.target).find('#skillsInput').val();
+        var skillsArray = skillsInput.split(',');
         //remove whitespace arround skills
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
+        
         var employee = {
             firstName: $(e.target).find('#firstNameInput').val(),
             lastName: $(e.target).find('#lastNameInput').val(),
@@ -67,10 +80,14 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
+        
+        // call a method on the server to update the employee 
         Employees.update(
             { _id: _id },
             { $set: employee }
         );
+        
+        // reset the dialog
         $('#editEmployeeModal').modal('hide');
     }
 });
