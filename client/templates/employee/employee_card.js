@@ -16,9 +16,9 @@ Template.employeeCard.events = {
     },
 
     'click .employeeEditButton': function() {
-        var data = this;
-        // render Template into "Edit Employee" Modal Dialog
-        Blaze.renderWithData(Template.employeeInput, data, $("#editEmployeeFormInsert").get(0));
+        // set Session attribute that stores the selected employee
+        Session.set('employees.employeeToEdit', this);
+        // show modal
         $('#editEmployeeModal').modal('show');
     }
 }

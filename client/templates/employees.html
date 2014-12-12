@@ -43,10 +43,10 @@
                 </div>
                 <div class="modal-body">
                     <form id="editEmployeeForm" role="form">
-                        <div id="editEmployeeFormInsert"></div>
+                        {{> employeeInput editEmployee}}
                         <div class="form-group">
                             <button class="btn btn-primary submitEditEmployee" type="submit">Save</button>
-                            <button class="btn btn-default cancelEditEmployee" type="reset">Cancel</button>
+                            <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
                         </div>
                     </form>
                 </div>
