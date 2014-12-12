@@ -24,5 +24,29 @@ Meteor.methods({
         var employeeId = Employees.insert(employee);
         
         return employeeId;
+    },
+
+
+    // this method updates an employee in the database
+    updateEmployee: function(employeeAttributes) {
+        var user = Meteor.user();
+        
+        // ensure that the user is logged in
+        if (!user)
+            throw new Meteor.Error(401, "You need to be logged in to edit an employee!");
+        
+        // make sure the client passed us an Id
+        if (!employeeAttributes._id)
+            throw new Meteor.Error(422, "Client passed invalid data. (Id is missing)");
+            
+        /** TODO: Make sure the user is the creator of the employee he is trying to delete. */
+            
+        // pick only the attributes we need and create a employee database entry
+        var employee = _.pick(employeeAttributes, 'firstName', 'lastName', 'eMail', 'skills', 'type', 'workTime');
+        
+        Employees.update(
+            { _id: employeeAttributes._id }, // query
+            { $set: employee }
+        );
     }
 });

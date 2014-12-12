@@ -61,8 +61,6 @@ Template.employees.events({
 
     'submit #editEmployeeForm': function(e) {
         e.preventDefault();
-        
-        var _id = $(e.target).find('#objectID').val();
 
         // parse the skills into an array
         var skillsInput = $(e.target).find('#skillsInput').val();
@@ -72,7 +70,9 @@ Template.employees.events({
             array[index] = element.trim();
         });
         
+        // gather the employee information
         var employee = {
+            _id: $(e.target).find('#objectID').val(),
             firstName: $(e.target).find('#firstNameInput').val(),
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
@@ -81,13 +81,13 @@ Template.employees.events({
             workTime: $(e.target).find('#workTimeInput').val()
         };
         
-        // call a method on the server to update the employee 
-        Employees.update(
-            { _id: _id },
-            { $set: employee }
-        );
-        
-        // reset the dialog
-        $('#editEmployeeModal').modal('hide');
+        // call a method on the server to update the employee
+        Meteor.call('updateEmployee', employee, function(error) {
+            if (error)
+                return alert(error.reason);
+
+            // reset the dialog
+            $('#editEmployeeModal').modal('hide');
+        });
     }
 });
