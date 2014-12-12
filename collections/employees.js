@@ -24,6 +24,20 @@ Meteor.methods({
         var employeeId = Employees.insert(employee);
         
         return employeeId;
+    },    
+    
+    
+    // this method deletes an employee from the database
+    deleteEmployee: function(employeeId) {
+        var user = Meteor.user();
+
+        // ensure that the user is logged in
+        if (!user)
+            throw new Meteor.Error(401, "You need to be logged in to delete employees!");
+            
+        /** TODO: Maybe check if the user is the creator of the employee. */
+        
+        Employees.remove(employeeId);
     },
 
 
