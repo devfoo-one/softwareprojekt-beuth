@@ -25,15 +25,16 @@ Template.employees.events({
     'submit #addNewEmployeeForm': function(e) {
         e.preventDefault();
 
-        skillsInput = $(e.target).find('#skillsInput').val();
-        skillsArray = skillsInput.split(',');
+        // parse the skills into an array
+        var skillsInput = $(e.target).find('#skillsInput').val();
+        var skillsArray = skillsInput.split(',');
         //remove whitespace arround skills
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
 
+        // collect information about the employee
         var newEmployee = {
-            managerID: Meteor.user()._id,
             firstName: $(e.target).find('#firstNameInput').val(),
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
@@ -41,9 +42,17 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
-        Employees.insert(newEmployee);
-        e.target.reset();
-        $('#addNewEmployeeModal').modal('hide');
+    
+        // call a method on the server to create the employee 
+        Meteor.call('createEmployee', newEmployee, function(error) {
+            if (error)
+                return alert(error.reason);
+
+            // reset the dialog
+            e.target.reset();
+            $('#addNewEmployeeModal').modal('hide');
+        });
+
     },
 
     'click .cancelModalButton': function(e) {
@@ -52,14 +61,18 @@ Template.employees.events({
 
     'submit #editEmployeeForm': function(e) {
         e.preventDefault();
-        var _id = $(e.target).find('#objectID').val()
-        skillsInput = $(e.target).find('#skillsInput').val();
-        skillsArray = skillsInput.split(',');
+
+        // parse the skills into an array
+        var skillsInput = $(e.target).find('#skillsInput').val();
+        var skillsArray = skillsInput.split(',');
         //remove whitespace arround skills
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
+        
+        // gather the employee information
         var employee = {
+            _id: $(e.target).find('#objectID').val(),
             firstName: $(e.target).find('#firstNameInput').val(),
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
@@ -67,10 +80,14 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
-        Employees.update(
-            { _id: _id },
-            { $set: employee }
-        );
-        $('#editEmployeeModal').modal('hide');
+        
+        // call a method on the server to update the employee
+        Meteor.call('updateEmployee', employee, function(error) {
+            if (error)
+                return alert(error.reason);
+
+            // reset the dialog
+            $('#editEmployeeModal').modal('hide');
+        });
     }
 });

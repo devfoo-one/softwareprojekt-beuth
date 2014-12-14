@@ -27,22 +27,23 @@ Template.companyInput.events = {
 Template.settingsDialog.events({
     'submit form': function(e, template) {
         e.preventDefault();
-        var companyName = $(e.target).find('#companyNameInput').val();
-        var companyLogo = document.getElementById("companyLogoPreview").src;
-        Meteor.users.update(
-            {_id:Meteor.user()._id},
-            {$set:{"profile.companyName": companyName}}
-        );
         
-        Meteor.users.update(
-            {_id:Meteor.user()._id},
-            {$set:{"profile.companyLogo": companyLogo}}
-        );           
-        
-        //clean dialog
-        e.target.reset();
-        $('#companyDetailsInsert').empty();
-        $('#setCompanyDetails').modal('hide');
+        // collect information about the company
+        var companySettings = {
+            companyName: $(e.target).find('#companyNameInput').val(),
+            companyLogo: document.getElementById("companyLogoPreview").src
+        };          
+   
+        // call a method on the server to update the company settings
+        Meteor.call('updateCompanySettings', companySettings, function(error) {
+            if (error)
+                return alert(error.reason);
+
+            //clean dialog
+            e.target.reset();
+            $('#companyDetailsInsert').empty();
+            $('#setCompanyDetails').modal('hide');
+        });
     },
     
     'click .cancelModalButton': function(e) {

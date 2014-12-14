@@ -22,7 +22,6 @@ if (Projects.find().count() === 0) {
 // if the employees collection is empty, provide some default data
 if (Employees.find().count() === 0) {
     Employees.insert({
-        managerID: null, // id of user that is able to manage this Employees
         firstName: 'Bender',
         lastName: 'Rodriguez',
         eMail: 'benderrodriguez@devfoo.de',
@@ -32,7 +31,6 @@ if (Employees.find().count() === 0) {
     });
 
     Employees.insert({
-        managerID: null,
         firstName: 'Hubert',
         lastName: 'Farnsworth',
         eMail: 'hubertfarnsworth@devfoo.de',
