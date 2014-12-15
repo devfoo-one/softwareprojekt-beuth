@@ -6,6 +6,10 @@ Meteor.publish('employees', function() {
     return Employees.find();
 });
 
+Meteor.publish('engagements', function() {
+    return Engagements.find();
+});
+
 
 Meteor.users.allow({
     remove: function (userId, doc) {
