@@ -4,7 +4,7 @@ if (Meteor.isServer) {
         // test user data
         var options = {
             username: "tester",
-            email: "tester@testerei.de",
+            email: "staffingdashboard-tester@devfoo.de",
             password: "tester"
         };
 
