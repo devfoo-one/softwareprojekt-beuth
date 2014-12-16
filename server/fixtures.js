@@ -1,58 +1,80 @@
-// if the projects collection is empty, provide some default data
-if (Projects.find().count() === 0) {
-    Projects.insert({
-        title: 'Sort Socks',
-        projectManager: 'Hans Wurst',
-        description: 'Sort all the socks alphabetically and by colour.'
-    });
+// if the server starts, create a default test user, if it doesn't already exist
+if (Meteor.isServer) {
+    Meteor.startup(function () {
+        // test user data
+        var options = {
+            username: "tester",
+            email: "staffingdashboard-tester@devfoo.de",
+            password: "tester"
+        };
 
-    Projects.insert({
-        title: 'Rule the world',
-        projectManager: 'Klaus Kleber',
-        description: 'Obvious, duh!'
-    });
+        // check if the test user exists
+        var testUserCount = Meteor.users.find( {
+            username: options.username,
+            emails: { $elemMatch: { address: options.email} }
+        } ).count();
 
-    Projects.insert({
-        title: 'Eat all the red gummibears',
-        projectManager: 'Gundula Gause',
-        description: 'JUST EAT THEM ALL!!!'
-    });
-}
+        // create the test user if it doesn't exist
+        if (testUserCount === 0) {
+            var testUserId = Accounts.createUser(options);
 
-// if the employees collection is empty, provide some default data
-if (Employees.find().count() === 0) {
-    Employees.insert({
-        firstName: 'Bender',
-        lastName: 'Rodriguez',
-        eMail: 'benderrodriguez@devfoo.de',
-        skills: ['drinking','bending'],
-        type: 'contract',
-        workTime: 100
-    });
+            // provide some default data for the projects collection
+            Projects.insert({
+                title: 'Sort Socks',
+                projectManager: 'Hans Wurst',
+                description: 'Sort all the socks alphabetically and by colour.',
+                creatorId: testUserId
+            });
 
-    Employees.insert({
-        firstName: 'Hubert',
-        lastName: 'Farnsworth',
-        eMail: 'hubertfarnsworth@devfoo.de',
-        skills: ['science','sleeping'],
-        type: 'freelance',
-        workTime: 50
-    });
-}
+            Projects.insert({
+                title: 'Rule the world',
+                projectManager: 'Klaus Kleber',
+                description: 'Obvious, duh!',
+                creatorId: testUserId
+            });
 
-//// if the engagements collection is empty, provide some default data
-if (Engagements.find().count() === 0) {
-    Engagements.insert({
-        projectID: null,
-        employeeID: null,
-        startDate: new Date(14,06,15),
-        endDate: new Date(14,07,15)
-    });
+            Projects.insert({
+                title: 'Eat all the red gummibears',
+                projectManager: 'Gundula Gause',
+                description: 'JUST EAT THEM ALL!!!',
+                creatorId: testUserId
+            });
 
-    Engagements.insert({
-        employeeID: null,
-        projectID: null,
-        startDate: new Date(28,06,15),
-        endDate: new Date(28,07,15)
+            // provide some default data for the employees collection
+            Employees.insert({
+                firstName: 'Bender',
+                lastName: 'Rodriguez',
+                eMail: 'benderrodriguez@devfoo.de',
+                skills: ['drinking','bending'],
+                type: 'contract',
+                workTime: 100,
+                creatorId: testUserId
+            });
+
+            Employees.insert({
+                firstName: 'Hubert',
+                lastName: 'Farnsworth',
+                eMail: 'hubertfarnsworth@devfoo.de',
+                skills: ['science','sleeping'],
+                type: 'freelance',
+                workTime: 50,
+                creatorId: testUserId
+            });
+
+            // provide some default data for the engagements collection
+            Engagements.insert({
+                projectID: null,
+                employeeID: null,
+                startDate: new Date(14,06,15),
+                endDate: new Date(14,07,15)
+            });
+
+            Engagements.insert({
+                employeeID: null,
+                projectID: null,
+                startDate: new Date(28,06,15),
+                endDate: new Date(28,07,15)
+            });
+        }
     });
 }

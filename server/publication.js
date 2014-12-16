@@ -1,9 +1,9 @@
 Meteor.publish('projects', function() {
-    return Projects.find() ;
+    return Projects.find({creatorId: this.userId}) ;
 });
 
 Meteor.publish('employees', function() {
-    return Employees.find();
+    return Employees.find({creatorId: this.userId});
 });
 
 
