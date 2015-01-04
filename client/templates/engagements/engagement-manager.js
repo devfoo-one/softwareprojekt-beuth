@@ -21,15 +21,25 @@ Template.employeeDetailView.events({
     'submit #addEngagementForm' : function(e){
         e.preventDefault();
 
+        //check if a correct porject name is chosen
+        var _projectName = $(e.target).find('#projectNameInput').val();
+        var _projectId;
+        try {
+            _projectId = Projects.findOne({title: _projectName})._id;
+        } catch(e){}
+
+        
         // collect information about engagement
+        
+        
         var newEngagement = {
-            projectId: 43,
-            employeeId: 44,
-            projectName: $(e.target).find('#projectNameInput').val(),
+            projectId: _projectId,
+            employeeId: this._id,
+            projectName: _projectName,
             startDate: $(e.target).find('#startDateInput').val(),
             endDate: $(e.target).find('#endDateInput').val()
         };
-    
+        
         // call a method on the server to create the employee 
         Meteor.call('createEngagement', newEngagement, function(error) {
             if (error)
