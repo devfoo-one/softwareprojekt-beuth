@@ -5,7 +5,7 @@
 /*helper for displaying all engagments*/
 Template.employeeDetailView.helpers({
     engagements : function(){
-        return Engagements.find();
+        return Engagements.find({employeeId: this._id});
     }
 });
 
@@ -18,6 +18,32 @@ Template.engagementInput.rendered = function () {
 
 
 Template.employeeDetailView.events({
+   
+    /*function to delete clicked engagement*/
+    'click #engagementDeleteButton' : function(e){
+        var thisId = this._id;
+        var onOk = function () {
+            Meteor.call('deleteEngagement', thisId, function(error) {
+                    if(error) {
+                        // if an error occurs display why it happened
+                        return alert(error.reason);
+                    }
+            });
+        };
+        
+        var buttonLabels = {
+            ok: "Delete",
+            cancel: "Cancel"
+        };
+        
+        var warningHeader = "Delete Engagement ?";
+        var warningMessage = "Are you sure you want to delete the engagement '" + this.projectName + "'? This cannot be undone!";
+        
+        showWarning(warningHeader, warningMessage, onOk, buttonLabels);
+    },
+    
+
+    /*function to add a new engagement*/
     'submit #addEngagementForm' : function(e){
         e.preventDefault();
 
