@@ -1,0 +1,52 @@
+<!--
+--  This template describes the input of a new engagement
+-->
+
+<template name="engagementInput">
+    <div class="inputFields">
+        <!--
+            <input type="hidden" id="objectID" value="{{_id}}">
+            evtl. die project und employee id
+        -->
+        <div class="form-group">
+            <label for="projectNameInput">Project</label>
+            <select id="projectNameSelect" class="form-control">
+                {{#each projects}}
+                    <option value="{{_id}}">{{title}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <label for="startDateInput">Start Date</label>
+                        <div class="input-group date engagementDatepicker" id='startDatePicker'>
+                            <input id="startDateInput" type='text' class="form-control" data-date-format="YYYY/MM/DD" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <label for="endDateInput">End Date</label>
+                        <div class="input-group date engagementDatepicker" id='endDatePicker'>
+                            <input id="endDateInput" type='text' class="form-control" data-date-format="YYYY/MM/DD" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
