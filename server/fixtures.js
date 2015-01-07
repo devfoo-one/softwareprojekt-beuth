@@ -68,17 +68,15 @@ if (Meteor.isServer) {
             // if the engagements collection is empty, provide some default data
             if (Engagements.find().count() === 0) {
                 Engagements.insert({
-                    projectID: '1',
-                    employeeID: '2',
-                    projectName: 'Testee',
+                    projectId: '1',
+                    employeeId: '2',
                     startDate: new Date(14,06,15),
                     endDate: new Date(14,07,15)
                 });
 
                 Engagements.insert({
-                    employeeID: null,
-                    projectID: null,
-                    projectName: 'Mongoo',
+                    employeeId: null,
+                    projectId: null,
                     startDate: new Date(28,06,15),
                     endDate: new Date(28,07,15)
                 });

@@ -1,15 +1,15 @@
-<!-- 
---  This Template is for showing all projects which are already assigned to _this employee. 
+<!--
+--  This Template is for showing all projects which are already assigned to _this employee.
 --  Also show the Start and end time of that Engagement
 -->
 
 <template name="engagementTupel">
     <tr>
-        <td>{{projectName}}</td>
+        <td>{{getProjectTitleById projectId}}</td>
         <td>{{startDate}}</td>
         <td>{{endDate}}</td>
         <td>
-             <span title="Delete" class="pull-right header-button glyphicon glyphicon-trash" role="button" id="engagementDeleteButton" style="cursor: pointer;"></span> 
+             <span title="Delete" class="pull-right header-button glyphicon glyphicon-trash" role="button" id="engagementDeleteButton" style="cursor: pointer;"></span>
          </td>
     </tr>
 </template>
