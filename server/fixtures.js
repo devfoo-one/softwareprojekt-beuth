@@ -19,68 +19,62 @@ if (Meteor.isServer) {
             var testUserId = Accounts.createUser(options);
 
             // provide some default data for the projects collection
-            if (Projects.find().count() === 0) {
-                Projects.insert({
-                    title: 'Sort Socks',
-                    projectManager: 'Hans Wurst',
-                    description: 'Sort all the socks alphabetically and by colour.',
-                    creatorId: testUserId
-                });
+            var demoProject1 = Projects.insert({
+                title: 'Sort Socks',
+                projectManager: 'Hans Wurst',
+                description: 'Sort all the socks alphabetically and by colour.',
+                creatorId: testUserId
+            });
 
-                Projects.insert({
-                    title: 'Rule the world',
-                    projectManager: 'Klaus Kleber',
-                    description: 'Obvious, duh!',
-                    creatorId: testUserId
-                });
+            var demoProject2 = Projects.insert({
+                title: 'Rule the world',
+                projectManager: 'Klaus Kleber',
+                description: 'Obvious, duh!',
+                creatorId: testUserId
+            });
 
-                Projects.insert({
-                    title: 'Eat all the red gummibears',
-                    projectManager: 'Gundula Gause',
-                    description: 'JUST EAT THEM ALL!!!',
-                    creatorId: testUserId
-                });
-            }
+            Projects.insert({
+                title: 'Eat all the red gummibears',
+                projectManager: 'Gundula Gause',
+                description: 'JUST EAT THEM ALL!!!',
+                creatorId: testUserId
+            });
 
             // provide some default data for the employees collection
-            if (Employees.find().count() === 0) {
-                Employees.insert({
-                    firstName: 'Bender',
-                    lastName: 'Rodriguez',
-                    eMail: 'benderrodriguez@devfoo.de',
-                    skills: ['drinking','bending'],
-                    type: 'contract',
-                    workTime: 100,
-                    creatorId: testUserId
-                });
+            var demoEmployee1 = Employees.insert({
+                firstName: 'Bender',
+                lastName: 'Rodriguez',
+                eMail: 'benderrodriguez@devfoo.de',
+                skills: ['drinking','bending'],
+                type: 'contract',
+                workTime: 100,
+                creatorId: testUserId
+            });
 
-                Employees.insert({
-                    firstName: 'Hubert',
-                    lastName: 'Farnsworth',
-                    eMail: 'hubertfarnsworth@devfoo.de',
-                    skills: ['science','sleeping'],
-                    type: 'freelance',
-                    workTime: 50,
-                    creatorId: testUserId
-                });
-            }
+            var demoEmployee2 = Employees.insert({
+                firstName: 'Hubert',
+                lastName: 'Farnsworth',
+                eMail: 'hubertfarnsworth@devfoo.de',
+                skills: ['science','sleeping'],
+                type: 'freelance',
+                workTime: 50,
+                creatorId: testUserId
+            });
 
             // if the engagements collection is empty, provide some default data
-            if (Engagements.find().count() === 0) {
-                Engagements.insert({
-                    projectId: '1',
-                    employeeId: '2',
-                    startDate: new Date(14,06,15),
-                    endDate: new Date(14,07,15)
-                });
+            Engagements.insert({
+                projectId: demoProject1,
+                employeeId: demoEmployee1,
+                startDate: new Date(14,06,15),
+                endDate: new Date(14,07,15)
+            });
 
-                Engagements.insert({
-                    employeeId: null,
-                    projectId: null,
-                    startDate: new Date(28,06,15),
-                    endDate: new Date(28,07,15)
-                });
-            }
+            Engagements.insert({
+                projectId: demoProject2,
+                employeeId: demoEmployee2,
+                startDate: new Date(28,06,15),
+                endDate: new Date(28,07,15)
+            });
         }
     });
 }

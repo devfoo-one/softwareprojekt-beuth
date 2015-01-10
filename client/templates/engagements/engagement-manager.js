@@ -40,7 +40,8 @@ Template.employeeDetailView.events({
             cancel: "Cancel"
         };
         var warningHeader = "Delete Engagement ?";
-        var warningMessage = "Are you sure you want to delete the engagement '" + this.projectName + "'? This cannot be undone!";
+        var projectTitle = Projects.findOne({_id: this.projectId}).title;
+        var warningMessage = "Are you sure you want to delete the engagement '" + projectTitle + "'? This cannot be undone!";
         showWarning(warningHeader, warningMessage, onOk, buttonLabels);
     },
 
