@@ -7,7 +7,7 @@ Meteor.publish('employees', function() {
 });
 
 Meteor.publish('engagements', function() {
-    return Engagements.find();
+    return Engagements.find({creatorId: this.userId});
 });
 
 
