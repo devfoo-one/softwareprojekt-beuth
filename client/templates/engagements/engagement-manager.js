@@ -50,11 +50,18 @@ Template.employeeDetailView.events({
         e.preventDefault();
         // collect information about engagement
         var _projectId = $(e.target).find('#projectNameSelect').val();
+        
+        //get right Date format
+        var startDateString = Date.parse( $(e.target).find('#startDateInput').val() );
+        var _startDate = new Date(startDateString);
+        var endDateString =  Date.parse( $(e.target).find('#endDateInput').val() );
+        var _endDate = new Date(endDateString);
+        
         var newEngagement = {
             projectId: _projectId,
             employeeId: this._id,
-            startDate: $(e.target).find('#startDateInput').val(),
-            endDate: $(e.target).find('#endDateInput').val()
+            startDate: _startDate,
+            endDate: _endDate
         };
         // call a method on the server to create the employee
         Meteor.call('createEngagement', newEngagement, function(error) {
