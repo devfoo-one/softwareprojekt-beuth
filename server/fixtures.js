@@ -65,15 +65,17 @@ if (Meteor.isServer) {
             Engagements.insert({
                 projectId: demoProject1,
                 employeeId: demoEmployee1,
-                startDate: new Date(14,06,15),
-                endDate: new Date(14,07,15)
+                creatorId: testUserId,
+                startDate: new Date(2014,06,15),
+                endDate: new Date(2014,07,15)
             });
 
             Engagements.insert({
                 projectId: demoProject2,
                 employeeId: demoEmployee2,
-                startDate: new Date(28,06,15),
-                endDate: new Date(28,07,15)
+                creatorId: testUserId,
+                startDate: new Date(2015,06,28),
+                endDate: new Date(2015,07,28)
             });
         }
     });
