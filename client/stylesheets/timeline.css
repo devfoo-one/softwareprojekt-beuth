@@ -1,0 +1,35 @@
+#gantt {
+    height: 500px;
+    background-color: inherit;
+}
+
+#gantt .chart {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+#gantt .axis path, #gantt .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#gantt .bar {
+    fill: #33b5e5;
+}
+
+#gantt .bar-failed {
+    fill: #CC0000;
+}
+
+#gantt .bar-running {
+    fill: #669900;
+}
+
+#gantt .bar-succeeded {
+    fill: #33b5e5;
+}
+
+#gantt .bar-killed {
+    fill: #ffbb33;
+}
