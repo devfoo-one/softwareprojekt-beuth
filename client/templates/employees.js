@@ -32,6 +32,37 @@ Template.employees.events({
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
+                
+       
+       //creates an default object for the freedays
+        var freeDaysObj = {
+            monday      : false,
+            tuesday     : false,
+            wednesday   : false,
+            thursday    : false,
+            friday      : false
+        };
+        
+        //each weekday which is checked, set on true in the freedaysobject 
+        $('.freeDaysInput:checked').each(function(i){
+            switch( $(this).val() ) {
+                case "monday" :
+                    freeDaysObj.monday = true;
+                    break;
+                case "tuesday" :
+                    freeDaysObj.tuesday = true;
+                    break;
+                case "wednesday" :
+                    freeDaysObj.wednesday = true;
+                    break;
+                case "thursday" :
+                    freeDaysObj.thursday = true;
+                    break; 
+                case "friday" :
+                    freeDaysObj.friday = true;
+                    break;
+            }
+        });
 
         // collect information about the employee
         var newEmployee = {
@@ -39,6 +70,7 @@ Template.employees.events({
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
             skills: skillsArray,
+            freeDays : freeDaysObj,
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
@@ -70,6 +102,36 @@ Template.employees.events({
             array[index] = element.trim();
         });
         
+         //creates an default object for the freedays
+        var freeDaysObj = {
+            monday      : false,
+            tuesday     : false,
+            wednesday   : false,
+            thursday    : false,
+            friday      : false
+        };
+        
+        //each weekday which is checked, set on true in the freedaysobject 
+        $('.freeDaysInput:checked').each(function(i){
+            switch( $(this).val() ) {
+                case "monday" :
+                    freeDaysObj.monday = true;
+                    break;
+                case "tuesday" :
+                    freeDaysObj.tuesday = true;
+                    break;
+                case "wednesday" :
+                    freeDaysObj.wednesday = true;
+                    break;
+                case "thursday" :
+                    freeDaysObj.thursday = true;
+                    break; 
+                case "friday" :
+                    freeDaysObj.friday = true;
+                    break;
+            }
+        });
+        
         // gather the employee information
         var employee = {
             _id: $(e.target).find('#objectID').val(),
@@ -77,6 +139,7 @@ Template.employees.events({
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
             skills: skillsArray,
+            freeDays : freeDaysObj,
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };

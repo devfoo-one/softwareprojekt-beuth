@@ -14,7 +14,7 @@ Meteor.methods({
             throw new Meteor.Error(422, "Please fill in a first and last name!");
         
         // create the employee database entry
-        var employee = _.pick(employeeAttributes, 'firstName', 'lastName', 'eMail', 'skills', 'type', 'workTime');
+        var employee = _.pick(employeeAttributes, 'firstName', 'lastName', 'eMail', 'skills', 'freeDays', 'type', 'workTime');
         
         employee = _.extend(employee, {
             creatorId: user._id
@@ -56,7 +56,7 @@ Meteor.methods({
         /** TODO: Make sure the user is the creator of the employee he is trying to delete. */
             
         // pick only the attributes we need and create a employee database entry
-        var employee = _.pick(employeeAttributes, 'firstName', 'lastName', 'eMail', 'skills', 'type', 'workTime');
+        var employee = _.pick(employeeAttributes, 'firstName', 'lastName', 'eMail', 'skills', 'freeDays', 'type', 'workTime');
         
         Employees.update(
             { _id: employeeAttributes._id }, // query

@@ -18,16 +18,16 @@
             <input class="form-control" type="text" id="contractTypeInput" value="{{type}}">
         </div>
         <div class="form-group">
-            <label for="workTimeInput">Work Time (%):</label>
+            <label for="workTimeInput">Work Time (hours per week):</label>
             <input class="form-control" type="text" id="workTimeInput" value="{{workTime}}">
         </div>
         <div class="form-group">
             <label>None Available Days:</label><br>
-            <label class="checkbox-inline"><input type="checkbox" value="">Monday</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Tuesday</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Wednesday</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Thursday</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Friday</label>
+            <label class="checkbox-inline"><input class="freeDaysInput" type="checkbox" value="monday" checked>Monday</label>
+            <label class="checkbox-inline"><input class="freeDaysInput" type="checkbox" value="tuesday">Tuesday</label>
+            <label class="checkbox-inline"><input class="freeDaysInput" type="checkbox" value="wednesday">Wednesday</label>
+            <label class="checkbox-inline"><input class="freeDaysInput" type="checkbox" value="thursday">Thursday</label>
+            <label class="checkbox-inline"><input class="freeDaysInput" type="checkbox" value="friday">Friday</label>
         </div>
         <div class="form-group">
             <label for="skillsInput">Skills (separated by commas):</label>
