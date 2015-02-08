@@ -21,6 +21,28 @@ Template.employees.helpers({
     }
 });
 
+Template.employeeInput.helpers({
+    checkDay : function(day){
+        if(this){
+            if(day === "monday" && this.freeDays.monday){
+                return "checked";
+            }
+            if(day === "tuesday" && this.freeDays.tuesday){
+                return "checked";
+            }
+            if(day === "wednesday" && this.freeDays.wednesday){
+                return "checked";
+            }
+            if(day === "thursday" && this.freeDays.thursday){
+                return "checked";
+            }
+            if(day === "friday" && this.freeDays.friday){
+                return "checked";
+            }
+        }      
+    }
+});
+
 Template.employees.events({
     'submit #addNewEmployeeForm': function(e) {
         e.preventDefault();
@@ -139,7 +161,7 @@ Template.employees.events({
             lastName: $(e.target).find('#lastNameInput').val(),
             eMail: $(e.target).find('#eMailInput').val(),
             skills: skillsArray,
-            freeDays : freeDaysObj,
+            freeDays : freeDaysObj  ,
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
