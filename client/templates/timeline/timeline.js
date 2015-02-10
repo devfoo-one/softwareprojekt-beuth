@@ -1,20 +1,25 @@
+Template.timeline.helpers
+
 Template.timeline.rendered = function(){
 
-    // create demo objects
-    var tasks = [
-        {
-            "startDate":Date.now(),
-            "endDate":d3.time.week.offset(Date.now(),2),
-            "taskName":"HUBERT",
-            "status":"RUNNING"
-        },
-        {
-        "startDate":d3.time.week.offset(Date.now(),3),
-        "endDate":d3.time.week.offset(Date.now(),5),
-        "taskName":"HUBERT",
-        "status":"RUNNING"
-        }
-    ];
+    // get employees for y axis
+    var employeeNames = [];
+    Employees.find().forEach(function(employee){
+        employeeNames.push(employee.lastName);
+    });
+
+    // get engagements
+    var engagements = [];
+    Engagements.find().forEach(function(engagement){
+        var employee = Employees.findOne({_id: engagement.employeeId});
+        var engagement = {
+            "startDate": engagement.startDate,
+            "endDate": engagement.endDate,
+            "taskName": employee.lastName,
+            "status": "RUNNING"
+        };
+        engagements.push(engagement);
+    });
 
     var taskStatus = {
         "SUCCEEDED" : "bar",
@@ -23,8 +28,7 @@ Template.timeline.rendered = function(){
         "KILLED" : "bar-killed"
     };
 
-    var taskNames = [ "HUBERT", "P Job", "E Job", "A Job", "N Job" ];
-
+    // set x axis ticks to weeknumber
     var format = "%U";
 
     var margin = {
@@ -36,12 +40,12 @@ Template.timeline.rendered = function(){
 
     var gantt =
         d3.gantt()
-        .taskTypes(taskNames)
+        .taskTypes(employeeNames)
         .taskStatus(taskStatus)
         .tickFormat(format)
         .margin(margin)
         .timeDomainMode("fixed");
-    
+
     gantt.timeDomain([Date.now(), d3.time.week.offset(Date.now(),12)]);
-    gantt(tasks);
+    gantt(engagements);
 };
