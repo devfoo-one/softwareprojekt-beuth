@@ -1,6 +1,14 @@
+#gantt-jumbotron {
+    padding: 0;
+    background-color: inherit;
+}
+
+#gantt-container {
+    margin: 0;
+}
+
 #gantt {
     height: 500px;
-    background-color: inherit;
 }
 
 #gantt .chart {
@@ -18,18 +26,10 @@
     fill: #33b5e5;
 }
 
-#gantt .bar-failed {
-    fill: #CC0000;
+#gantt .bar-freetime {
+    fill: #666666;
 }
 
-#gantt .bar-running {
+#gantt .bar-project {
     fill: #669900;
-}
-
-#gantt .bar-succeeded {
-    fill: #33b5e5;
-}
-
-#gantt .bar-killed {
-    fill: #ffbb33;
 }

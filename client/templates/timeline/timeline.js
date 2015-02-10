@@ -1,5 +1,3 @@
-Template.timeline.helpers
-
 Template.timeline.rendered = function(){
 
     // get employees for y axis
@@ -12,30 +10,29 @@ Template.timeline.rendered = function(){
     var engagements = [];
     Engagements.find().forEach(function(engagement){
         var employee = Employees.findOne({_id: engagement.employeeId});
-        var engagement = {
+        engagements.push({
             "startDate": engagement.startDate,
             "endDate": engagement.endDate,
             "taskName": employee.lastName,
-            "status": "RUNNING"
-        };
-        engagements.push(engagement);
+            "status": "PROJECT"
+        });
     });
 
+    // colors set in /stylesheets/timeline.css
     var taskStatus = {
-        "SUCCEEDED" : "bar",
-        "FAILED" : "bar-failed",
-        "RUNNING" : "bar-running",
-        "KILLED" : "bar-killed"
+        "PROJECT" : "bar-project",
+        "FREETIME" : "bar-freetime"
     };
 
     // set x axis ticks to weeknumber
     var format = "%U";
 
+    // margin of gantt chart within container (axis description NOT included)
     var margin = {
         top : 20,
         right : 20,
         bottom : 20,
-        left : 20
+        left : 100
     };
 
     var gantt =
@@ -48,4 +45,5 @@ Template.timeline.rendered = function(){
 
     gantt.timeDomain([Date.now(), d3.time.week.offset(Date.now(),12)]);
     gantt(engagements);
+    console.log(gantt);
 };
