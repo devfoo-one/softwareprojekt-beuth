@@ -43,7 +43,8 @@ Template.timeline.rendered = function(){
         .margin(margin)
         .timeDomainMode("fixed");
 
-    gantt.timeDomain([Date.now(), d3.time.week.offset(Date.now(),12)]);
+    var timeDomainBegin = new Date(2015, 02, 10); // Only for demo! To be removed when scrolling is implemented
+    gantt.timeDomain([timeDomainBegin, d3.time.week.offset(timeDomainBegin, 12)]);
     gantt(engagements);
     console.log(gantt);
 };
