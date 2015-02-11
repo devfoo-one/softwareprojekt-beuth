@@ -48,6 +48,7 @@ if (Meteor.isServer) {
                 skills: ['drinking','bending'],
                 type: 'contract',
                 workTime: 100,
+                freeDays: {"monday" : false, "tuesday" : false, "wednesday" : false, "thursday" : false, "friday" : false },
                 creatorId: testUserId
             });
 
@@ -58,6 +59,7 @@ if (Meteor.isServer) {
                 skills: ['science','sleeping'],
                 type: 'freelance',
                 workTime: 50,
+                freeDays: {"monday" : false, "tuesday" : false, "wednesday" : false, "thursday" : false, "friday" : false },
                 creatorId: testUserId
             });
 
