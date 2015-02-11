@@ -1,0 +1,35 @@
+#gantt-jumbotron {
+    padding: 0;
+    background-color: inherit;
+}
+
+#gantt-container {
+    margin: 0;
+}
+
+#gantt {
+    height: 500px;
+}
+
+#gantt .chart {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+#gantt .axis path, #gantt .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#gantt .bar {
+    fill: #33b5e5;
+}
+
+#gantt .bar-freetime {
+    fill: #666666;
+}
+
+#gantt .bar-project {
+    fill: #669900;
+}
