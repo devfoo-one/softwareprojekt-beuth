@@ -39,11 +39,15 @@ Template.employeeInput.helpers({
             if(day === "friday" && this.freeDays.friday){
                 return "checked";
             }
-        }      
+        }
     }
 });
 
 Template.employees.events({
+    'click #btn-AddNewEmployee': function(e) {
+        toggleModal(Template.AddNewEmployeeModal, "#addNewEmployeeModal", Template.instance().lastNode);
+    },
+
     'submit #addNewEmployeeForm': function(e) {
         e.preventDefault();
 
@@ -54,8 +58,8 @@ Template.employees.events({
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
-                
-       
+
+
        //creates an default object for the freedays
         var freeDaysObj = {
             monday      : false,
@@ -64,8 +68,8 @@ Template.employees.events({
             thursday    : false,
             friday      : false
         };
-        
-        //each weekday which is checked, set on true in the freedaysobject 
+
+        //each weekday which is checked, set on true in the freedaysobject
         $('.freeDaysInput:checked').each(function(i){
             switch( $(this).val() ) {
                 case "monday" :
@@ -79,7 +83,7 @@ Template.employees.events({
                     break;
                 case "thursday" :
                     freeDaysObj.thursday = true;
-                    break; 
+                    break;
                 case "friday" :
                     freeDaysObj.friday = true;
                     break;
@@ -96,8 +100,8 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
-    
-        // call a method on the server to create the employee 
+
+        // call a method on the server to create the employee
         Meteor.call('createEmployee', newEmployee, function(error) {
             if (error)
                 return alert(error.reason);
@@ -123,7 +127,7 @@ Template.employees.events({
         skillsArray.forEach(function(element, index, array) {
             array[index] = element.trim();
         });
-        
+
          //creates an default object for the freedays
         var freeDaysObj = {
             monday      : false,
@@ -132,8 +136,8 @@ Template.employees.events({
             thursday    : false,
             friday      : false
         };
-        
-        //each weekday which is checked, set on true in the freedaysobject 
+
+        //each weekday which is checked, set on true in the freedaysobject
         $('.freeDaysInput:checked').each(function(i){
             switch( $(this).val() ) {
                 case "monday" :
@@ -147,13 +151,13 @@ Template.employees.events({
                     break;
                 case "thursday" :
                     freeDaysObj.thursday = true;
-                    break; 
+                    break;
                 case "friday" :
                     freeDaysObj.friday = true;
                     break;
             }
         });
-        
+
         // gather the employee information
         var employee = {
             _id: $(e.target).find('#objectID').val(),
@@ -165,7 +169,7 @@ Template.employees.events({
             type: $(e.target).find('#contractTypeInput').val(),
             workTime: $(e.target).find('#workTimeInput').val()
         };
-        
+
         // call a method on the server to update the employee
         Meteor.call('updateEmployee', employee, function(error) {
             if (error)

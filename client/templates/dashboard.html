@@ -2,7 +2,7 @@
     <!-- This navbar is the navbar on the bottom of the page, containing the add button -->
     <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="container">
-            <button title="Create a new project" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#addNewProjectModal">Add new project</button>
+            <button id="btn-AddNewProject" title="Create a new project" class="btn btn-success navbar-btn navbar-right">Add new project</button>
         </div>
     </nav>
     <div class="row-fluid">
@@ -13,7 +13,9 @@
             {{/each}}
         </div>
     </div>
+</template>
 
+<template name="AddNewProjectModal">
     <div id="addNewProjectModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
