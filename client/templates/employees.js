@@ -1,17 +1,5 @@
 /*Template Manager for Employees*/
 
-Template.employees.rendered = function(){
-        $('#editEmployeeModal').on('hide.bs.modal', function (e) {
-            /*
-            clear session variable when dialog is hiding.
-            i´m not really shure why this is neccessary,
-            but leaving it set causes data display errors (empty fields...)
-            */
-            Session.set('employees.employeeToEdit', null);
-        });
-    };
-
-
 Template.employees.helpers({
     employees: function() {
         return Employees.find();
