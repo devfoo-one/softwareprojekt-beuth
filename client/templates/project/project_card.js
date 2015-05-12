@@ -10,16 +10,24 @@ Template.projectCard.events = {
                     return alert(error.reason);
                 }
             });
-        }
-        
-        var buttonLabels = { 
-            ok: "Delete", 
+        };
+
+        var buttonLabels = {
+            ok: "Delete",
             cancel: "Cancel"
         };
-        
         var warningHeader = "Delete project '" + _this.title + "' ?";
         var warningMessage = "Are you sure you want to delete the project '" + _this.title + "'? This cannot be undone!";
-        
         showWarning(warningHeader, warningMessage, onOK, buttonLabels);
+    },
+    'click .projectEditButton': function() {
+        Session.set('projects.projectToEdit', this);
+        toggleModal(Template.EditProjectModal, "#editProjectModal",Template.instance().lastNode);
     }
-}
+};
+
+Template.EditProjectModal.helpers({
+    editProject: function() {
+        return Session.get('projects.projectToEdit');
+    }
+});
