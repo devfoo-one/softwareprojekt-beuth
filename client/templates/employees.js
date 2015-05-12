@@ -3,9 +3,6 @@
 Template.employees.helpers({
     employees: function() {
         return Employees.find();
-    },
-    editEmployee: function() {
-        return Session.get('employees.employeeToEdit');
     }
 });
 
