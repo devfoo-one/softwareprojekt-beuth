@@ -13,3 +13,5 @@ email
 tsega:bootstrap3-datetimepicker
 
 d3js:d3
+sanjo:jasmine
+velocity:html-reporter
