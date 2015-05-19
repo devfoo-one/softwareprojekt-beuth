@@ -2,7 +2,7 @@
     <!-- This navbar is the navbar on the bottom of the page, containing the add button -->
     <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="container">
-            <button title="Create a new project" class="btn btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#addNewProjectModal">Add new project</button>
+            <button id="btn-AddNewProject" title="Create a new project" class="btn btn-success navbar-btn navbar-right">Add new project</button>
         </div>
     </nav>
     <div class="row-fluid">
@@ -13,7 +13,9 @@
             {{/each}}
         </div>
     </div>
+</template>
 
+<template name="AddNewProjectModal">
     <div id="addNewProjectModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -26,6 +28,28 @@
                         {{> projectInput}}
                            <div class="form-group">
                                 <button class="btn btn-primary submitNewProject" type="submit">Create Project</button>
+                                <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                           </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
+
+<template name="EditProjectModal">
+    <div id="editProjectModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Edit project</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="EditProjectForm" role="form">
+                        {{> projectInput editProject}}
+                           <div class="form-group">
+                                <button class="btn btn-primary submitNewProject" type="submit">Save</button>
                                 <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
                            </div>
                     </form>

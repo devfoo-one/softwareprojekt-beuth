@@ -1,22 +1,22 @@
 /*Template Manager for Dashboard*/
 
 Template.dashboard.helpers({
-  projects: function() {
-    return Projects.find();
-  }
+    projects: function() {
+        return Projects.find();
+    }
 });
 
 Template.dashboard.events({
-    'submit form': function(e) {
+    'submit #addNewProjectForm': function(e) {
         e.preventDefault();
-        
+
         // collect the data for the new project from the dialog
         var newProject = {
             title: $(e.target).find('#titleInput').val(),
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
-        
+
         // call a method on the server to insert the new project
         Meteor.call('createProject', newProject, function(error, id) {
             if(error) {
@@ -28,11 +28,33 @@ Template.dashboard.events({
             e.target.reset();
             $('#addNewProjectModal').modal('hide');
         });
-        
+
     },
-    
+
+    'submit #EditProjectForm': function(e) {
+        e.preventDefault();
+
+        // collect the updated project information
+        var project = {
+            _id: $(e.target).find('#objectID').val(),
+            title: $(e.target).find('#titleInput').val(),
+            projectManager: $(e.target).find('#managerInput').val(),
+            description: $(e.target).find('#descriptionInput').val()
+        };
+        // call a method on the server to update the project
+        Meteor.call('updateProject', project, function(error) {
+            if (error) { return alert(error.reason); }
+            Router.go('/');
+        });
+        $('#editProjectModal').modal('hide');
+    },
+
     'click .cancelModalButton': function(e) {
         // cancel button was clicked, close the dialog
         $(e.target).closest('.modal').modal('hide');
+    },
+
+    'click #btn-AddNewProject': function(e) {
+        createModal(Template.AddNewProjectModal, "#addNewProjectModal", Template.instance().lastNode);
     }
 });

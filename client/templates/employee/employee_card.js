@@ -11,16 +11,16 @@ Template.employeeCard.events = {
                     return alert(error.reason);
                 }
             });
-        }
-        
+        };
+
         var buttonLabels = {
             ok: "Delete",
             cancel: "Cancel"
         };
-        
+
         var warningHeader = "Delete employee '" + _this.firstName + " " + this.lastName + "' ?";
         var warningMessage = "Are you sure you want to delete the employee '" + _this.firstName + " " + this.lastName + "'? This cannot be undone!";
-        
+
         showWarning(warningHeader, warningMessage, onOK, buttonLabels);
     },
 
@@ -28,6 +28,13 @@ Template.employeeCard.events = {
         // set Session attribute that stores the selected employee
         Session.set('employees.employeeToEdit', this);
         // show modal
-        $('#editEmployeeModal').modal('show');
+        // $('#editEmployeeModal').modal('show');
+        createModal(Template.EditEmployeeModal, "#editEmployeeModal", Template.instance().lastNode);
     }
-}
+};
+
+Template.EditEmployeeModal.helpers({
+    editEmployee: function() {
+        return Session.get('employees.employeeToEdit');
+    }
+});
