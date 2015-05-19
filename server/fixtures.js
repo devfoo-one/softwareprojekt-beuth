@@ -40,6 +40,11 @@ if (Meteor.isServer) {
                 creatorId: testUserId
             });
 
+            Projects.insert({
+                title:'Vacation',
+                creatorId: null
+            });
+
             // provide some default data for the employees collection
             var demoEmployee1 = Employees.insert({
                 firstName: 'Bender',

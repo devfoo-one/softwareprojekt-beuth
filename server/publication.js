@@ -1,5 +1,5 @@
 Meteor.publish('projects', function() {
-    return Projects.find({creatorId: this.userId}) ;
+    return Projects.find( { $or: [ { creatorId: this.userId } , { creatorId: null } ] } );
 });
 
 Meteor.publish('employees', function() {
