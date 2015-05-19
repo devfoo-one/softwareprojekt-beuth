@@ -55,6 +55,6 @@ Template.dashboard.events({
     },
 
     'click #btn-AddNewProject': function(e) {
-        toggleModal(Template.AddNewProjectModal, "#addNewProjectModal", Template.instance().lastNode);
+        createModal(Template.AddNewProjectModal, "#addNewProjectModal", Template.instance().lastNode);
     }
 });

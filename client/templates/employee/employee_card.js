@@ -29,7 +29,7 @@ Template.employeeCard.events = {
         Session.set('employees.employeeToEdit', this);
         // show modal
         // $('#editEmployeeModal').modal('show');
-        toggleModal(Template.EditEmployeeModal, "#editEmployeeModal", Template.instance().lastNode);
+        createModal(Template.EditEmployeeModal, "#editEmployeeModal", Template.instance().lastNode);
     }
 };
 

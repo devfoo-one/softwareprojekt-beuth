@@ -5,7 +5,7 @@
  * @param {String} modalID - CSS selector of modal to trigger
  * @param {DOM Node} instance - DOM node to render modal into
  */
-toggleModal = function toogleModal(modalTemplate, modalID, instance) {
+createModal = function createModal(modalTemplate, modalID, instance) {
     var modal = Blaze.render(modalTemplate, instance);
     $(modalID).on('hide.bs.modal', function (e) {
             Blaze.remove(modal);

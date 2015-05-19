@@ -22,7 +22,7 @@ Template.projectCard.events = {
     },
     'click .projectEditButton': function() {
         Session.set('projects.projectToEdit', this);
-        toggleModal(Template.EditProjectModal, "#editProjectModal",Template.instance().lastNode);
+        createModal(Template.EditProjectModal, "#editProjectModal",Template.instance().lastNode);
     }
 };
 

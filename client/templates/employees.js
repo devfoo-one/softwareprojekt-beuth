@@ -30,7 +30,7 @@ Template.employeeInput.helpers({
 
 Template.employees.events({
     'click #btn-AddNewEmployee': function(e) {
-        toggleModal(Template.AddNewEmployeeModal, "#addNewEmployeeModal", Template.instance().lastNode);
+        createModal(Template.AddNewEmployeeModal, "#addNewEmployeeModal", Template.instance().lastNode);
     },
 
     'submit #addNewEmployeeForm': function(e) {
