@@ -13,9 +13,15 @@
             <div class="collapse navbar-collapse" id="navigation">
                 {{#if currentUser}}
                     <ul class="nav navbar-nav navbar-left" role="menu">
-                        <li><a href="{{pathFor 'dashboard'}}">Projects</a></li>
-                        <li><a href="{{pathFor 'employees'}}">Employees</a></li>
-                        <li><a href="{{pathFor 'timeline'}}">Timeline</a></li>
+                        <li class="{{ activeIfTemplateIs 'Dashboard'}}">
+                            <a href="{{pathFor 'dashboard'}}">Projects</a>
+                        </li>
+                        <li class="{{ activeIfTemplateIs 'Employees'}}">
+                            <a href="{{pathFor 'employees'}}">Employees</a>
+                        </li>
+                        <li class="{{ activeIfTemplateIs 'Timeline'}}">
+                            <a href="{{pathFor 'timeline'}}">Timeline</a>
+                        </li>
                     </ul>
                 {{/if}}
                 <ul class="nav navbar-nav navbar-right">
