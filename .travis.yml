@@ -8,7 +8,7 @@ services:
   
 before_install:
     - "curl https://install.meteor.com | /bin/sh"
-  
+    - "sleep 50"
 script:
   bash test.sh
 
