@@ -7,11 +7,9 @@ services:
   - mongodb
   
 before_install:
-    - "curl https://install.meteor.com | /bin/sh"
-    - "meteor reset"
-    - "meteor -p 3000 &"
+    npm install velocity-ci
   
-#script:
- # bash test.sh
+script:
+  bash test.sh
 
 
