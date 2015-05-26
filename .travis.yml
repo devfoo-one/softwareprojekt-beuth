@@ -3,10 +3,15 @@ language: node_js
 node_js:
   - "0.8"
   - "0.10"
- 
+services:
+  - mongodb
   
-
 before_install:
-  - "curl -L http://git.io/ejPSng | /bin/sh"
+    - "curl https://install.meteor.com | /bin/sh"
+    - "meteor reset"
+    - "meteor -p 3000 &"
+  
+#script:
+ # bash test.sh
 
 
