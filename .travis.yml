@@ -7,7 +7,7 @@ services:
   - mongodb
   
 before_install:
-    npm install velocity-ci
+    - "curl https://install.meteor.com | /bin/sh"
   
 script:
   bash test.sh
