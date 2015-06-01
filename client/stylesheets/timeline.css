@@ -29,17 +29,16 @@
     width: 22%;
 }
 
+.timeline-cell-week-highlight {
+    background-color: #8ce88c;
+}
+
 .timeline-project-bar {
     margin: 0 !important;
     padding: 0 !important;
     float: left;
     font-size: 0.8em;
     text-align: center;
-    height: 100%;
-}
-
-.timeline-project-bar2 {
-    margin-bottom: 0;
     height: 100%;
 }
 

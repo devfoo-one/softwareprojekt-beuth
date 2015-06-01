@@ -29,9 +29,24 @@ Template.timeline.rendered = function(){
         Session.set("timeline-startDate",moment(Session.get("timeline-startDate")).add(1, "week").toDate());
     });
 
-    // $('.timeline-project-list-item').draggable({ revert: true });
-    // $('.timeline-project-bar').draggable({ revert: true });
-    // $('.progress-bar').draggable({ revert: true });
+    $('.timeline-project-list-item').draggable({
+        revert: true,
+        snap: false,
+        zIndex: 100,
+    });
+
+    $('.timeline-cell-week').droppable({
+        activeClass: "timeline-cell-week-highlight",
+        drop: function( event, ui ) {
+            var projectID = ui.draggable.attr('data-projectid');
+            var employeeID = $(this).attr('data-employeeid');
+            var weekOffset = $(this).attr('data-weekoffset');
+            var startDate = moment(Session.get("timeline-startDate")).add(weekOffset, "w").toDate();
+
+            //TODO remove this line after implementation
+            console.log("Project " + projectID + " got dragged onto Employee " + employeeID + " Assignment should start on " + startDate);
+        }
+    });
 };
 
 Template.timelineHeader.helpers({

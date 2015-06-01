@@ -3,7 +3,7 @@
     <nav id="timeline-project-list" class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             {{#each projects}}
-                <span class="label label-primary timeline-project-list-item">{{title}}</span>
+                <span class="label label-primary timeline-project-list-item" data-projectid="{{_id}}">{{title}}</span>
             {{/each}}
         </div>
     </nav>
@@ -61,10 +61,10 @@
                 {{firstName}} {{lastName}} {{> timelineEmployeeLoadBar percent=70}} <!-- TODO implement me -->
             </div>
         </td>
-        <td class="timeline-cell-week">{{getProjectBars 0}}</td>
-        <td class="timeline-cell-week">{{getProjectBars 1}}</td>
-        <td class="timeline-cell-week">{{getProjectBars 2}}</td>
-        <td class="timeline-cell-week">{{getProjectBars 3}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="0">{{getProjectBars 0}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="1">{{getProjectBars 1}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="2">{{getProjectBars 2}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="3">{{getProjectBars 3}}</td>
     </tr>
 </template>
 
