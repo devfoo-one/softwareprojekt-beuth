@@ -1,50 +1,67 @@
+/**
+ * SESSION VARIABLES
+ * =================
+ *
+ * timeline-startDate : Date object that contains the first day of view
+ */
+
+Template.timeline.helpers({
+    employees: function() {
+        return Employees.find();
+    },
+    projects: function() {
+        return Projects.find();
+    }
+
+});
+
 Template.timeline.rendered = function(){
+    var firstDayOfWeek = moment().startOf("week").add(1,"day").toDate(); //add because week seems to start on sundays
+    Session.set("timeline-startDate", firstDayOfWeek);
 
-    // get employees for y axis
-    var employeeNames = [];
-    Employees.find().forEach(function(employee){
-        employeeNames.push(employee.lastName);
+    /* scroll left */
+    $('#timeline-btn-scroll-left').click(function(){
+        Session.set("timeline-startDate",moment(Session.get("timeline-startDate")).subtract(1, "week").toDate());
     });
 
-    // get engagements
-    var engagements = [];
-    Engagements.find().forEach(function(engagement){
-        var employee = Employees.findOne({_id: engagement.employeeId});
-        engagements.push({
-            "startDate": engagement.startDate,
-            "endDate": engagement.endDate,
-            "taskName": employee.lastName,
-            "status": "PROJECT"
-        });
+    /* scroll right */
+    $('#timeline-btn-scroll-right').click(function(){
+        Session.set("timeline-startDate",moment(Session.get("timeline-startDate")).add(1, "week").toDate());
     });
 
-    // colors set in /stylesheets/timeline.css
-    var taskStatus = {
-        "PROJECT" : "bar-project",
-        "FREETIME" : "bar-freetime"
-    };
-
-    // set x axis ticks to weeknumber
-    var format = "%U";
-
-    // margin of gantt chart within container (axis description NOT included)
-    var margin = {
-        top : 20,
-        right : 20,
-        bottom : 20,
-        left : 100
-    };
-
-    var gantt =
-        d3.gantt()
-        .taskTypes(employeeNames)
-        .taskStatus(taskStatus)
-        .tickFormat(format)
-        .margin(margin)
-        .timeDomainMode("fixed");
-
-    var timeDomainBegin = new Date(2015, 02, 10); // Only for demo! To be removed when scrolling is implemented
-    gantt.timeDomain([timeDomainBegin, d3.time.week.offset(timeDomainBegin, 12)]);
-    gantt(engagements);
-    console.log(gantt);
+    // $('.timeline-project-list-item').draggable({ revert: true });
+    // $('.timeline-project-bar').draggable({ revert: true });
+    // $('.progress-bar').draggable({ revert: true });
 };
+
+Template.timelineHeader.helpers({
+    /**
+     * returns weeknumber + increment (for table header)
+     *
+     * @param  {Number} increment weeks to increment
+     * @return {String} week number
+     */
+    getWeekNumber: function(increment) {
+        var startDate = moment(Session.get("timeline-startDate"));
+        return startDate.add(increment,"week").format("WW");
+    }
+});
+
+Template.timelineRow.helpers({
+    /**
+     * returns project bars for employee at startweek + increment
+     * @param  {EmployeeID} employeeID employeeID
+     * @param  {Number} increment  timeline-startDate + increment
+     * @return {[type]}            [description] TODO fill me
+     */
+    getProjectBars: function(increment) {
+        var employeeID = Template.currentData()['_id'];
+        var startDate = Session.get("timeline-startDate");
+        var queryDate = moment(startDate).add(increment, "w").toDate();
+        return employeeID + " - " + queryDate;
+        //TODO query here for project bars!
+    },
+    getEmployeeLoad: function() {
+        return 42; //TODO implement me
+    }
+});

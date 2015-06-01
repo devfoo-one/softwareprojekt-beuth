@@ -1,35 +1,67 @@
-#gantt-jumbotron {
-    padding: 0;
-    background-color: inherit;
+.timeline-employee-avatar {
+    font-size: 1em;
 }
 
-#gantt-container {
+.timeline-employee-loadbar {
     margin: 0;
+    height: 0.5em;
 }
 
-#gantt {
-    height: 500px;
+.timeline-col-employeeInfo {
+    width: 12%;
+    overflow: hidden;
+    font-size: 0.8em;
+    vertical-align: middle !important;
 }
 
-#gantt .chart {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
+.timeline-top-controllBar {
+    margin-bottom: 10px;
 }
 
-#gantt .axis path, #gantt .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
+.timeline-employee-row {
+    height: 3vh;
+    overflow: hidden;
 }
 
-#gantt .bar {
-    fill: #33b5e5;
+.timeline-cell-week {
+    padding: 0 !important; /* otherwise bootstrap selectors have a higher priority */
+    height: 3vh;
+    width: 22%;
 }
 
-#gantt .bar-freetime {
-    fill: #666666;
+.timeline-project-bar {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: left;
+    font-size: 0.8em;
+    text-align: center;
+    height: 100%;
 }
 
-#gantt .bar-project {
-    fill: #669900;
+.timeline-project-bar2 {
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.timeline-project-bar-blue {
+    background-color: #337ab7;
+    color: #ffffff;
+}
+
+.timeline-project-bar-green {
+    background-color: #5cb85c;
+    color: #000000;
+}
+
+.timeline-project-bar-red {
+    background-color: #d9534f;
+    color: #000000;
+}
+
+#timeline-project-list {
+    padding: 10px;
+}
+
+#timeline-project-list .label{
+    font-size: 1em;
 }
