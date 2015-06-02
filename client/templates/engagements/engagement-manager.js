@@ -50,13 +50,12 @@ Template.employeeDetailView.events({
         e.preventDefault();
         // collect information about engagement
         var _projectId = $(e.target).find('#projectNameSelect').val();
-        
+
         //get right Date format
         var startDateString = Date.parse( $(e.target).find('#startDateInput').val() );
         var _startDate = new Date(startDateString);
-        var endDateString =  Date.parse( $(e.target).find('#endDateInput').val() );
-        var _endDate = new Date(endDateString);
-        
+        var _endDate =  parseInt( $(e.target).find('#endDateInput').val() );
+
         var newEngagement = {
             projectId: _projectId,
             employeeId: this._id,
