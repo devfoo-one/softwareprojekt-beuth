@@ -59,18 +59,11 @@
                 {{firstName}} {{lastName}} {{> timelineEmployeeLoadBar percent=70}} <!-- TODO implement me -->
             </div>
         </td>
-        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="0">{{getProjectBars 0}}</td>
-        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="1">{{getProjectBars 1}}</td>
-        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="2">{{getProjectBars 2}}</td>
-        <td class="timeline-cell-week" data-employeeid="{{_id}}"  data-weekoffset="3">{{getProjectBars 3}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="0">{{{getProjectBars 0}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="1">{{{getProjectBars 1}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="2">{{{getProjectBars 2}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="3">{{{getProjectBars 3}}}</td>
     </tr>
-</template>
-
-<!-- TEMPLATE timelineCell -->
-<template name="timelineCell">
-    <!-- eployee ID reachable here with {{this._id}} -->
-    <div style="width:25%" class="timeline-project-bar timeline-project-bar-green">FASEL</div>
-    <div style="width:25%" class="timeline-project-bar timeline-project-bar-red">BLU</div>
 </template>
 
 <!-- TEMPLATE timelineEmployeeLoadBar -->

@@ -21,7 +21,7 @@ Template.addNewEngagementModal.events({
         var newEngagement = {
             projectId: $(e.target).find('#projectID').val(),
             employeeId: $(e.target).find('#employeeID').val(),
-            startDate: $(e.target).find('#startDate').val(),
+            startDate: new Date(Date.parse($(e.target).find('#startDate').val())),
             duration: $(e.target).find('#durationInput').val()
         };
         Meteor.call('createEngagement', newEngagement, function(error, id) {
