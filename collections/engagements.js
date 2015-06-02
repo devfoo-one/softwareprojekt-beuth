@@ -63,7 +63,7 @@ Meteor.methods({
         // pick only the attributes we need and create a engagement database entry
         var engagement = _.pick(engagementAttributes, 'projectId', 'employeeId', 'projectName', 'startDate', 'endDate');
 
-        Employees.update(
+        Engagements.update(
             { _id: engagementAttributes._id }, // query
             { $set: engagement }
         );
