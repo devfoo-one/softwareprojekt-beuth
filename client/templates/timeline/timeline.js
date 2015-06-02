@@ -15,6 +15,52 @@ Template.timeline.helpers({
 
 });
 
+
+// get a list of all engagements in a week
+getEngagementsForWeek = function(queryAttributes) {
+    var user = Meteor.user();
+
+    // ensure that the user is logged in
+    if (!user)
+        return [];
+
+    if(queryAttributes.employeeId !== undefined &&
+       queryAttributes.startDate instanceof Date )
+    {
+        // get the monday of the week queried
+        var startingWeek = moment(queryAttributes.startDate).day("Monday").toDate();
+
+        var engagementsInWeek = Engagements.find({
+            employeeId: queryAttributes.employeeId,
+            startDate: startingWeek
+        });
+
+        var employee = Employees.findOne({ _id: queryAttributes.employeeId });
+
+        if (employee) {
+            var employeeWorkTime = employee.workTime || 1;
+            var result = [];
+            engagementsInWeek.forEach( function(entry) {
+                result.push({
+                    projectId: entry.projectId,
+                    percent: (entry.duration / employeeWorkTime * 100).toFixed(2)
+                });
+            });
+            return result;
+        }
+        else {
+            // employee was not found
+            console.error("Queried employee could not be found!");
+        }
+    }
+
+    return [];
+}
+
+// this query: getEngagementsForWeek({employeeId: bendersID, startDate: new Date(2015, 05, 02)});
+// should return an array with two objects in it
+
+
 Template.timeline.rendered = function(){
     var firstDayOfWeek = moment().startOf("week").add(1,"day").toDate(); //add because week seems to start on sundays
     Session.set("timeline-startDate", firstDayOfWeek);

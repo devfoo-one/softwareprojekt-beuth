@@ -68,7 +68,23 @@ if (Meteor.isServer) {
                 projectId: demoProject1,
                 employeeId: demoEmployee1,
                 creatorId: testUserId,
-                startDate: new Date(2015, 02, 15),
+                startDate: new Date(2015, 05, 01),
+                duration: 8
+            });
+
+            Engagements.insert({
+                projectId: demoProject2,
+                employeeId: demoEmployee1,
+                creatorId: testUserId,
+                startDate: new Date(2015, 05, 01),
+                duration: 8
+            });
+
+            Engagements.insert({
+                projectId: demoProject1,
+                employeeId: demoEmployee1,
+                creatorId: testUserId,
+                startDate: new Date(2015, 05, 8),
                 duration: 8
             });
 
@@ -76,7 +92,7 @@ if (Meteor.isServer) {
                 projectId: demoProject2,
                 employeeId: demoEmployee2,
                 creatorId: testUserId,
-                startDate: new Date(2015, 02, 28),
+                startDate: new Date(2015, 05, 28),
                 duration: 20
             });
         }
