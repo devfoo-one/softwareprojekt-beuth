@@ -2,7 +2,8 @@
 
 Template.dashboard.helpers({
     projects: function() {
-        return Projects.find();
+        var _this = Meteor.user();
+        return Projects.find( { creatorId: _this._id } );
     }
 });
 
