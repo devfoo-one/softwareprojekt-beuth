@@ -47,7 +47,7 @@ if (Meteor.isServer) {
                 eMail: 'benderrodriguez@devfoo.de',
                 skills: ['drinking','bending'],
                 type: 'contract',
-                workTime: 100,
+                workTime: 36,
                 freeDays: {"monday" : false, "tuesday" : false, "wednesday" : false, "thursday" : false, "friday" : false },
                 creatorId: testUserId
             });
@@ -58,7 +58,7 @@ if (Meteor.isServer) {
                 eMail: 'hubertfarnsworth@devfoo.de',
                 skills: ['science','sleeping'],
                 type: 'freelance',
-                workTime: 50,
+                workTime: 42,
                 freeDays: {"monday" : false, "tuesday" : false, "wednesday" : false, "thursday" : false, "friday" : false },
                 creatorId: testUserId
             });
@@ -68,16 +68,32 @@ if (Meteor.isServer) {
                 projectId: demoProject1,
                 employeeId: demoEmployee1,
                 creatorId: testUserId,
-                startDate: new Date(2015, 02, 15),
-                endDate: new Date(2015, 03, 15)
+                startDate: new Date(2015, 05, 01),
+                duration: 8
+            });
+
+            Engagements.insert({
+                projectId: demoProject2,
+                employeeId: demoEmployee1,
+                creatorId: testUserId,
+                startDate: new Date(2015, 05, 01),
+                duration: 8
+            });
+
+            Engagements.insert({
+                projectId: demoProject1,
+                employeeId: demoEmployee1,
+                creatorId: testUserId,
+                startDate: new Date(2015, 05, 8),
+                duration: 8
             });
 
             Engagements.insert({
                 projectId: demoProject2,
                 employeeId: demoEmployee2,
                 creatorId: testUserId,
-                startDate: new Date(2015, 02, 28),
-                endDate: new Date(2015, 03, 28)
+                startDate: new Date(2015, 05, 28),
+                duration: 20
             });
         }
     });

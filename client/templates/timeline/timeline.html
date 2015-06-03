@@ -1,8 +1,76 @@
+<!-- TEMPLATE timeline -->
 <template name="timeline">
-    <div id="gantt-jumbotron" class="jumbotron">
-        <div id="gantt-container" class="container">
-            <div id="gantt" class="container">
+    <nav id="timeline-project-list" class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            {{#each projects}}
+                <span class="label label-primary timeline-project-list-item" data-projectid="{{_id}}">{{title}}</span>
+            {{/each}}
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="timeline-top-controllBar col-md-12 text-right">
+                <div class="btn-group btn-group-xs" role="group" aria-label="zoom control">
+                    <button type="button" id="timeline-btn-scroll-left" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" disabled>W</button>
+                    <button type="button" class="btn btn-default" disabled>M</button>
+                    <button type="button" class="btn btn-default" disabled>Q</button>
+                    <button type="button" class="btn btn-default" disabled>J</button>
+                    <button type="button" id="timeline-btn-scroll-right" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-condensed table-hover">
+                    {{> timelineHeader}}
+                    <tbody>
+                        {{#each employees}} {{> timelineRow}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- TEMPLATE timelineHeader -->
+<template name="timelineHeader">
+    <thead>
+        <tr>
+            <th class="timeline-col-employeeInfo">&nbsp;</th>
+            <th class="text-center">KW{{getWeekNumber 0}}</th>
+            <th class="text-center">KW{{getWeekNumber 1}}</th>
+            <th class="text-center">KW{{getWeekNumber 2}}</th>
+            <th class="text-center">KW{{getWeekNumber 3}}</th>
+        </tr>
+    </thead>
+</template>
+
+<!-- TEMPLATE timelineRow -->
+<template name="timelineRow">
+    <tr>
+        <td class="timeline-col-employeeInfo">
+            <div class="timeline-employee">
+                <span class="timeline-employee-avatar glyphicon glyphicon-user"></span>
+                {{firstName}} {{lastName}} {{> timelineEmployeeLoadBar percent=70}} <!-- TODO implement me -->
+            </div>
+        </td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="0">{{{getProjectBars 0}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="1">{{{getProjectBars 1}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="2">{{{getProjectBars 2}}}</td>
+        <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="3">{{{getProjectBars 3}}}</td>
+    </tr>
+</template>
+
+<!-- TEMPLATE timelineEmployeeLoadBar -->
+<template name="timelineEmployeeLoadBar">
+    <div class="progress timeline-employee-loadbar">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percent}}" aria-valuemax="100" style="width: {{percent}}%">
+            <span class="sr-only">load: {{percent}}%</span>
         </div>
     </div>
 </template>
