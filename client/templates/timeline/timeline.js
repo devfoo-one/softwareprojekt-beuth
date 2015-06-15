@@ -48,6 +48,7 @@ getEngagementsForWeek = function(queryAttributes) {
                 var project = getProjectById(entry.projectId);
                 result.push({
                     projectId: entry.projectId,
+                    projectShortName: project.shortName,
                     projectTitle: project.title,
                     percent: (entry.duration / employeeWorkTime * 100).toFixed(2)
                 });
@@ -133,7 +134,8 @@ Template.timelineRow.helpers({
             var percent = Math.floor(value.percent);
             var projectId = value.projectId;
             var projectTitle = value.projectTitle;
-            htmlReturn = htmlReturn + '<div style="width:' + percent + '%" class="timeline-project-bar timeline-project-bar-green">' + projectTitle + '</div>';
+            var projectShortName = value.projectShortName;
+            htmlReturn = htmlReturn + '<div style="width:' + percent + '%" class="timeline-project-bar timeline-project-bar-green">' + projectShortName + '</div>';
         });
         return htmlReturn;
     },

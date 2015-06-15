@@ -2,15 +2,19 @@
     <div class="inputFields">
         <input type="hidden" id="objectID" value="{{_id}}">
         <div class="form-group">
-            <label for="titleInput">Titel: </label>
+            <label for="titleInput">Title:</label>
             <input class="form-control" type="text" id="titleInput" value="{{title}}">
         </div>
         <div class="form-group">
-            <label for="managerInput">Manager: </label>
+            <label for="shortNameInput">Short Name:</label>
+            <input class="form-control" type="text" id="shortNameInput" value="{{shortName}}">
+        </div>
+        <div class="form-group">
+            <label for="managerInput">Manager:</label>
             <input class="form-control" type="text" id="managerInput" value="{{projectManager}}">
         </div>
         <div class="form-group">
-            <label for="descriptionInput">Beschreibung: </label>
+            <label for="descriptionInput">Description:</label>
             <textarea class="form-control" rows="3" id="descriptionInput">{{description}}</textarea>
         </div>
     </div>
