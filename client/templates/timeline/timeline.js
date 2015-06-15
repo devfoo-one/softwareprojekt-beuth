@@ -14,6 +14,10 @@ Template.timeline.helpers({
     },
     projects: function() {
         return Projects.find();
+    },
+    getProjectColor: function() {
+        var color = this.color;
+        return color;
     }
 });
 
@@ -133,7 +137,9 @@ Template.timelineRow.helpers({
             var percent = Math.floor(value.percent);
             var projectId = value.projectId;
             var projectTitle = value.projectTitle;
-            htmlReturn = htmlReturn + '<div style="width:' + percent + '%" class="timeline-project-bar timeline-project-bar-green">' + projectTitle + '</div>';
+            var project = Projects.findOne({_id: projectId});
+            var color = project.color;
+            htmlReturn = htmlReturn + '<div style="width:' + percent + '%; background-color:' + color + ';" class="timeline-project-bar timeline-project-bar-green">' + projectTitle + '</div>';
         });
         return htmlReturn;
     },

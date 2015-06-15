@@ -19,7 +19,7 @@ Meteor.methods({
             throw new Meteor.Error(422, "Please select a project!");
 
         // create the engagement database entry
-        var engagement = _.pick(engagementAttributes,'projectId', 'employeeId', 'startDate', 'duration');
+        var engagement = _.pick(engagementAttributes, 'projectId', 'employeeId', 'startDate', 'duration');
 
         engagement = _.extend(engagement, {
             creatorId: user._id

@@ -14,6 +14,7 @@ Template.dashboard.events({
         // collect the data for the new project from the dialog
         var newProject = {
             title: $(e.target).find('#titleInput').val(),
+            color: $(e.target).find('#colorInput').val(),
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
@@ -39,6 +40,7 @@ Template.dashboard.events({
         var project = {
             _id: $(e.target).find('#objectID').val(),
             title: $(e.target).find('#titleInput').val(),
+            color: $(e.target).find('#colorInput').val(),
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };

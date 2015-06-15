@@ -22,6 +22,7 @@ if (Meteor.isServer) {
             var demoProject1 = Projects.insert({
                 title: 'Sort Socks',
                 projectManager: 'Hans Wurst',
+                color: '#337AB7',
                 description: 'Sort all the socks alphabetically and by colour.',
                 creatorId: testUserId
             });
@@ -29,6 +30,7 @@ if (Meteor.isServer) {
             var demoProject2 = Projects.insert({
                 title: 'Rule the world',
                 projectManager: 'Klaus Kleber',
+                color: '#337AB7',
                 description: 'Obvious, duh!',
                 creatorId: testUserId
             });
@@ -36,12 +38,14 @@ if (Meteor.isServer) {
             Projects.insert({
                 title: 'Eat all the red gummibears',
                 projectManager: 'Gundula Gause',
+                color: '#337AB7',
                 description: 'JUST EAT THEM ALL!!!',
                 creatorId: testUserId
             });
 
             Projects.insert({
                 title:'Vacation',
+                color: '#5CB85C',
                 creatorId: null
             });
 
