@@ -21,6 +21,7 @@ if (Meteor.isServer) {
             // provide some default data for the projects collection
             var demoProject1 = Projects.insert({
                 title: 'Sort Socks',
+                shortName: 'SortSocks',
                 projectManager: 'Hans Wurst',
                 description: 'Sort all the socks alphabetically and by colour.',
                 creatorId: testUserId
@@ -28,6 +29,7 @@ if (Meteor.isServer) {
 
             var demoProject2 = Projects.insert({
                 title: 'Rule the world',
+                shortName: 'RtW',
                 projectManager: 'Klaus Kleber',
                 description: 'Obvious, duh!',
                 creatorId: testUserId
@@ -35,6 +37,7 @@ if (Meteor.isServer) {
 
             Projects.insert({
                 title: 'Eat all the red gummibears',
+                shortName: 'gummibears',
                 projectManager: 'Gundula Gause',
                 description: 'JUST EAT THEM ALL!!!',
                 creatorId: testUserId
@@ -42,6 +45,7 @@ if (Meteor.isServer) {
 
             Projects.insert({
                 title:'Vacation',
+                shortName: 'Vacation',
                 creatorId: null
             });
 
