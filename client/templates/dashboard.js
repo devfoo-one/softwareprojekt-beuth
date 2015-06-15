@@ -15,6 +15,7 @@ Template.dashboard.events({
         var newProject = {
             title: $(e.target).find('#titleInput').val(),
             color: $(e.target).find('#colorInput').val(),
+            shortName: $(e.target).find('#shortNameInput').val(),
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
@@ -41,6 +42,7 @@ Template.dashboard.events({
             _id: $(e.target).find('#objectID').val(),
             title: $(e.target).find('#titleInput').val(),
             color: $(e.target).find('#colorInput').val(),
+            shortName: $(e.target).find('#shortNameInput').val(),
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
