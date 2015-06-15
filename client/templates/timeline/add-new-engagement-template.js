@@ -33,5 +33,8 @@ Template.addNewEngagementModal.events({
             Session.set("timeline.draggedDate", null);
             $('#addEngagementForm').modal('hide');
         });
+    },
+    'reset #addEngagementForm' : function(e) {
+        $('#addEngagementForm').modal('hide');
     }
 });
