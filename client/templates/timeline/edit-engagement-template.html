@@ -1,0 +1,37 @@
+<!-- TEMPLATE editEngagementModal -->
+<template name="editEngagementModal">
+    {{> editEngagementModalInner editEngagement}}
+</template>
+
+<!-- TEMPLATE editEngagementModalInner -->
+<template name="editEngagementModalInner">
+    <div id="editEngagementModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Edit engagement</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="editEngagementForm" role="form">
+                        <div class="inputFields">
+                            <label for="titleInput">Hours / Week: </label>
+                            <input class="form-control" type="text" id="durationInput" value="{{duration}}">
+                            <input type="hidden" id="engagementID" value="{{_id}}">
+                            <input type="hidden" id="projectID" value="{{projectId}}">
+                            <input type="hidden" id="employeeID" value="{{employeeId}}">
+                            <input type="hidden" id="startDate" value="{{startDate}}">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary submitEditEmployee" type="submit">Save</button>
+                            <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
