@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered table-condensed table-hover">
+                <table class="table table-bordered table-condensed table-hover timeline-tabel">
                     {{> timelineHeader}}
                     <tbody>
                         {{#each employees}} {{> timelineRow}} {{/each}}
@@ -52,7 +52,7 @@
 
 <!-- TEMPLATE timelineRow -->
 <template name="timelineRow">
-    <tr>
+    <tr class="timeline-row">
         <td class="timeline-col-employeeInfo">
             <div class="timeline-employee">
                 <span class="timeline-employee-avatar glyphicon glyphicon-user"></span>
