@@ -133,9 +133,10 @@ Template.timelineRow.helpers({
         assignments.forEach(function(value) {
             var percent = Math.floor(value.percent);
             var projectId = value.projectId;
-            var projectTitle = value.projectTitle;
             var projectShortName = value.projectShortName;
-            htmlReturn = htmlReturn + '<div style="width:' + percent + '%" class="timeline-project-bar timeline-project-bar-green">' + projectShortName + '</div>';
+            var project = Projects.findOne({_id: projectId});
+            var color = project.color;
+            htmlReturn = htmlReturn + '<div style="width:' + percent + '%; background-color:' + color + ';" class="timeline-project-bar timeline-project-bar-green">' + projectShortName + '</div>';
         });
         return htmlReturn;
     },

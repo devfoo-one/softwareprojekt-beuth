@@ -23,6 +23,7 @@ if (Meteor.isServer) {
                 title: 'Sort Socks',
                 shortName: 'SortSocks',
                 projectManager: 'Hans Wurst',
+                color: '#337AB7',
                 description: 'Sort all the socks alphabetically and by colour.',
                 creatorId: testUserId
             });
@@ -31,6 +32,7 @@ if (Meteor.isServer) {
                 title: 'Rule the world',
                 shortName: 'RtW',
                 projectManager: 'Klaus Kleber',
+                color: '#337AB7',
                 description: 'Obvious, duh!',
                 creatorId: testUserId
             });
@@ -39,12 +41,14 @@ if (Meteor.isServer) {
                 title: 'Eat all the red gummibears',
                 shortName: 'gummibears',
                 projectManager: 'Gundula Gause',
+                color: '#337AB7',
                 description: 'JUST EAT THEM ALL!!!',
                 creatorId: testUserId
             });
 
             Projects.insert({
                 title:'Vacation',
+                color: '#5CB85C',
                 shortName: 'Vacation',
                 creatorId: null
             });

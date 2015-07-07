@@ -14,7 +14,7 @@ Meteor.methods({
             throw new Meteor.Error(422, "Please fill in a title!");
 
         // create the project database entry (picks attributes out of 'projectAttributes' and creates new object (underscore library included in meteor))
-        var project = _.pick(projectAttributes, 'title', 'shortName', 'projectManager', 'description');
+        var project = _.pick(projectAttributes, 'title', 'shortName', 'projectManager', 'color', 'description');
 
         if (project.shortName === undefined || project.shortName === null || project.shortName === "") {
             project.shortName = project.title;
@@ -60,7 +60,7 @@ Meteor.methods({
         /** TODO: Make sure the user is the creator of the project he is trying to delete. */
 
         // pick only the attributes we need and create a project database entry
-        var project = _.pick(projectAttributes, 'title', 'shortName', 'projectManager', 'description');
+        var project = _.pick(projectAttributes, 'title', 'shortName', 'projectManager', 'color', 'description');
 
         if (project.shortName === undefined || project.shortName === null || project.shortName === "") {
             project.shortName = project.title;

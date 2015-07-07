@@ -23,6 +23,10 @@
     overflow: hidden;
 }
 
+.timeline-row, .timeline-tabel{
+    height: 100%;
+}
+
 .timeline-cell-week {
     padding: 0 !important; /* otherwise bootstrap selectors have a higher priority */
     height: 3vh;
