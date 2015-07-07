@@ -14,10 +14,6 @@ Template.timeline.helpers({
     },
     projects: function() {
         return Projects.find();
-    },
-    getProjectColor: function() {
-        var color = this.color;
-        return color;
     }
 });
 

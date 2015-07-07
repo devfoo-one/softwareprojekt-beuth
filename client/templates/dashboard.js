@@ -11,11 +11,14 @@ Template.dashboard.events({
     'submit #addNewProjectForm': function(e) {
         e.preventDefault();
 
+        // make sure the shortname doesn't contain whitespace
+        var shortNameNoSpace = $(e.target).find('#shortNameInput').val().replace(/\s/g, "_");
+
         // collect the data for the new project from the dialog
         var newProject = {
             title: $(e.target).find('#titleInput').val(),
             color: $(e.target).find('#colorInput').val(),
-            shortName: $(e.target).find('#shortNameInput').val(),
+            shortName: shortNameNoSpace,
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
@@ -37,12 +40,15 @@ Template.dashboard.events({
     'submit #EditProjectForm': function(e) {
         e.preventDefault();
 
+        // make sure the shortname doesn't contain whitespace
+        var shortNameNoSpace = $(e.target).find('#shortNameInput').val().replace(/\s/g, "_");
+
         // collect the updated project information
         var project = {
             _id: $(e.target).find('#objectID').val(),
             title: $(e.target).find('#titleInput').val(),
             color: $(e.target).find('#colorInput').val(),
-            shortName: $(e.target).find('#shortNameInput').val(),
+            shortName: shortNameNoSpace,
             projectManager: $(e.target).find('#managerInput').val(),
             description: $(e.target).find('#descriptionInput').val()
         };
