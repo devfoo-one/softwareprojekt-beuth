@@ -11,7 +11,7 @@ Template.addNewEngagementModal.helpers({
         return Session.get("timeline.draggedDate");
     },
     kw2add: function() {
-        return moment(Session.get("timeline.draggedDate")).format("WW");
+        return moment(Session.get("timeline.draggedDate")).format("WW-YYYY");
     }
 });
 
@@ -21,17 +21,22 @@ Template.addNewEngagementModal.events({
         var newEngagement = {
             projectId: $(e.target).find('#projectID').val(),
             employeeId: $(e.target).find('#employeeID').val(),
-            startDate: new Date(Date.parse($(e.target).find('#startDate').val())),
+            startDate: moment($(e.target).find('#startWeek').val(), 'WW-YYYY').toDate(),
+            endDate: moment($(e.target).find('#endWeek').val(), 'WW-YYYY').toDate(),
             duration: $(e.target).find('#durationInput').val()
         };
-        Meteor.call('createEngagement', newEngagement, function(error, id) {
-            if(error) {
-                return alert(error.reason);
-            }
-            Session.set("timeline.draggedProjectID", null);
-            Session.set("timeline.draggedEmployeeID", null);
-            Session.set("timeline.draggedDate", null);
-            $('#addEngagementForm').modal('hide');
-        });
+        var numEngagements = moment(newEngagement.endDate).diff(moment(newEngagement.startDate), 'weeks');
+        for(var i=0; i<=numEngagements; i++) {
+            newEngagement.startDate = moment(newEngagement.startDate).add(i, 'weeks').toDate();
+            Meteor.call('createEngagement', newEngagement, function(error, id) {
+                if(error) {
+                    return alert(error.reason);
+                }
+                Session.set("timeline.draggedProjectID", null);
+                Session.set("timeline.draggedEmployeeID", null);
+                Session.set("timeline.draggedDate", null);
+                $('#addEngagementForm').modal('hide');
+            });
+        }
     }
 });
