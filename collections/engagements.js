@@ -19,7 +19,7 @@ Meteor.methods({
             throw new Meteor.Error(422, "Please select a project!");
 
         // create the engagement database entry
-        var engagement = _.pick(engagementAttributes,'projectId', 'employeeId', 'startDate', 'endDate', 'duration');
+        var engagement = _.pick(engagementAttributes,'projectId', 'employeeId', 'startDate', 'groupStartDate', 'groupEndDate', 'duration');
 
         engagement = _.extend(engagement, {
             creatorId: user._id
@@ -61,7 +61,7 @@ Meteor.methods({
         /** TODO: Make sure the user is the creator of the employee he is trying to delete. */
 
         // pick only the attributes we need and create a engagement database entry
-        var engagement = _.pick(engagementAttributes, 'projectId', 'employeeId', 'projectName', 'startDate', 'duration');
+        var engagement = _.pick(engagementAttributes, 'projectId', 'employeeId', 'projectName', 'startDate', 'groupStartDate', 'groupEndDate', 'duration');
 
         Engagements.update(
             { _id: engagementAttributes._id }, // query

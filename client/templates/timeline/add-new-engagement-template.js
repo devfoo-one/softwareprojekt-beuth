@@ -22,12 +22,13 @@ Template.addNewEngagementModal.events({
             projectId: $(e.target).find('#projectID').val(),
             employeeId: $(e.target).find('#employeeID').val(),
             startDate: moment($(e.target).find('#startWeek').val(), 'WW-YYYY').toDate(),
-            endDate: moment($(e.target).find('#endWeek').val(), 'WW-YYYY').toDate(),
+            groupStartDate: moment($(e.target).find('#startWeek').val(), 'WW-YYYY').toDate(),
+            groupEndDate: moment($(e.target).find('#endWeek').val(), 'WW-YYYY').toDate(),
             duration: $(e.target).find('#durationInput').val()
         };
-        var numEngagements = moment(newEngagement.endDate).diff(moment(newEngagement.startDate), 'weeks');
+        var numEngagements = moment(newEngagement.groupEndDate).diff(moment(newEngagement.groupStartDate), 'weeks');
         for(var i=0; i<=numEngagements; i++) {
-            newEngagement.startDate = moment(newEngagement.startDate).add(i, 'weeks').toDate();
+            newEngagement.startDate = moment(newEngagement.groupStartDate).add(i, 'weeks').toDate();
             Meteor.call('createEngagement', newEngagement, function(error, id) {
                 if(error) {
                     return alert(error.reason);

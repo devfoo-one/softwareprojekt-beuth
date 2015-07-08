@@ -16,20 +16,46 @@
                     <h4 class="modal-title">Edit engagement</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="editEngagementForm" role="form">
-                        <div class="inputFields">
-                            <label for="titleInput">Hours / Week: </label>
-                            <input class="form-control" type="text" id="durationInput" value="{{duration}}">
-                            <input type="hidden" id="engagementID" value="{{_id}}">
-                            <input type="hidden" id="projectID" value="{{projectId}}">
-                            <input type="hidden" id="employeeID" value="{{employeeId}}">
-                            <input type="hidden" id="startDate" value="{{startDate}}">
+                    <div class="tabbable">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">CurrentKW</a></li>
+                        <li><a href="#tab2" data-toggle="tab">ALL</a></li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <form id="editSingleEngagementForm" role="form">
+                                <div class="inputFields">
+                                    <label for="titleInput">Hours / Week: </label>
+                                    <input class="form-control" type="text" id="singleDurationInput" value="{{duration}}">
+                                    <input type="hidden" id="singleEngagementID" value="{{_id}}">
+                                    <input type="hidden" id="singleProjectID" value="{{projectId}}">
+                                    <input type="hidden" id="singleEmployeeID" value="{{employeeId}}">
+                                    <input type="hidden" id="singleStartDate" value="{{startDate}}">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary submitEditSingleEngagement" type="submit">Save</button>
+                                    <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary submitEditEmployee" type="submit">Save</button>
-                            <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                        <div class="tab-pane" id="tab2">
+                            <form id="editWholeEngagementForm" role="form">
+                                <div class="inputFields">
+                                    <label for="startWeek">Start week (MM-YYYY)</label>
+                                    <input class="form-control" type="text" id="startWeek" pattern="\d{1,2}-\d{4}" value="{{groupStartDateKWFormat}}">
+                                    <label for="endWeek">End week (MM-YYYY)</label>
+                                    <input class="form-control" type="text" id="endWeek" pattern="\d{1,2}-\d{4}" value="{{groupEndDateKWFormat}}">
+                                    <input type="hidden" id="groupEngagementID" value="{{_id}}">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary submitEditWholeEngagement" type="submit">Save</button>
+                                    <button class="btn btn-default cancelModalButton" type="reset">Cancel</button>
+                                    <button class="btn btn-danger deleteWholeEngagementButton" type="button">Delete whole engagement</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
