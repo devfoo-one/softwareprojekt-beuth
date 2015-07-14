@@ -46,6 +46,20 @@
     height: 100%;
 }
 
+.timeline-project-bar-hover {
+    background-color: #ff0000 !important;
+}
+
+.timeline-project-bar-editbtn {
+    margin-left: 10px;
+    display: none;
+}
+
+.timeline-project-bar-deletebtn {
+    margin-right: 10px;
+    display: none;
+}
+
 .timeline-project-bar-blue {
     background-color: #337ab7;
     color: #ffffff;
