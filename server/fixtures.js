@@ -82,6 +82,8 @@ if (Meteor.isServer) {
                 employeeId: demoEmployee1,
                 creatorId: testUserId,
                 startDate: new Date(2015, 05, 01),
+                groupStartDate: new Date(2015, 05, 01),
+                groupEndDate: new Date(2015, 05, 01),
                 duration: 8
             });
 
@@ -90,6 +92,8 @@ if (Meteor.isServer) {
                 employeeId: demoEmployee1,
                 creatorId: testUserId,
                 startDate: new Date(2015, 05, 01),
+                groupStartDate: new Date(2015, 05, 01),
+                groupEndDate: new Date(2015, 05, 01),
                 duration: 8
             });
 
@@ -98,6 +102,8 @@ if (Meteor.isServer) {
                 employeeId: demoEmployee1,
                 creatorId: testUserId,
                 startDate: new Date(2015, 05, 8),
+                groupStartDate: new Date(2015, 05, 8),
+                groupEndDate: new Date(2015, 05, 8),
                 duration: 8
             });
 
@@ -106,6 +112,8 @@ if (Meteor.isServer) {
                 employeeId: demoEmployee2,
                 creatorId: testUserId,
                 startDate: new Date(2015, 05, 28),
+                groupStartDate: new Date(2015, 05, 28),
+                groupEndDate: new Date(2015, 05, 28),
                 duration: 20
             });
         }

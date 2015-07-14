@@ -6,6 +6,7 @@
  * timeline.draggedProjectID : project that got dragged onto timeline
  * timeline.draggedEmployeeID : employee a project got dragged onto
  * timeline.draggedDate : startDate of the cell a project got dragged onto
+ * timeline.engagementToEdit: Engagement, whose edit button has been clicked
  */
 
 Template.timeline.helpers({
@@ -47,6 +48,7 @@ getEngagementsForWeek = function(queryAttributes) {
             engagementsInWeek.forEach( function(entry) {
                 var project = getProjectById(entry.projectId);
                 result.push({
+                    engagementId : entry._id,
                     projectId: entry.projectId,
                     projectShortName: project.shortName,
                     projectTitle: project.title,
@@ -101,6 +103,43 @@ Template.timeline.rendered = function(){
     });
 };
 
+Template.timeline.events({
+    'mouseenter .timeline-project-bar': function(e) {
+        $(e.target).addClass('timeline-project-bar-hover'); //hover color
+        $(e.target).children('.timeline-project-bar-editbtn').show();
+        $(e.target).children('.timeline-project-bar-deletebtn').show();
+    },
+    'mouseleave .timeline-project-bar': function(e) {
+        $(e.target).removeClass('timeline-project-bar-hover');
+        $(e.target).children('.timeline-project-bar-editbtn').hide();
+        $(e.target).children('.timeline-project-bar-deletebtn').hide();
+    },
+    /* edit engagement */
+    'click .timeline-project-bar-editbtn': function(e) {
+        var engagementId = $(e.target).closest('.timeline-project-bar').attr('data-assignmentid');
+        Session.set('timeline.engagementToEdit', Engagements.findOne({_id: engagementId}));
+        createModal(Template.editEngagementModal, "#editEngagementModal", Template.instance().lastNode);
+    },
+    /* delete engagement */
+    'click .timeline-project-bar-deletebtn': function(e) {
+        var engagementId = $(e.target).closest('.timeline-project-bar').attr('data-assignmentid');
+        var onOK = function() {
+            Meteor.call('deleteEngagement', engagementId, function(error) {
+                if(error) {
+                    return alert(error.reason);
+                }
+            });
+        };
+        var buttonLabels = {
+            ok: "Delete engagement",
+            cancel: "Cancel"
+        };
+        var warningHeader = "Delete engagement?";
+        var warningMessage = "Are you sure you want to delete the engagement? This cannot be undone!";
+        showWarning(warningHeader, warningMessage, onOK, buttonLabels);
+    }
+});
+
 Template.timelineHeader.helpers({
     /**
      * returns weeknumber + increment (for table header)
@@ -132,11 +171,24 @@ Template.timelineRow.helpers({
         var htmlReturn = "";
         assignments.forEach(function(value) {
             var percent = Math.floor(value.percent);
+            var engagementId = value.engagementId;
             var projectId = value.projectId;
             var projectShortName = value.projectShortName;
             var project = Projects.findOne({_id: projectId});
             var color = project.color;
-            htmlReturn = htmlReturn + '<div style="width:' + percent + '%; background-color:' + color + ';" class="timeline-project-bar timeline-project-bar-green">' + projectShortName + '</div>';
+            htmlReturn =
+                htmlReturn +
+                '<div style="width:' +
+                percent +
+                '%; background-color:' +
+                color +
+                ';" class="timeline-project-bar timeline-project-bar-green" data-assignmentid="' +
+                engagementId +
+                '">' +
+                '<span class="timeline-project-bar-editbtn pull-left glyphicon glyphicon-pencil"></span>' +
+                projectShortName +
+                '<span class="timeline-project-bar-deletebtn pull-right glyphicon glyphicon-trash"></span>' +
+                '</div>';
         });
         return htmlReturn;
     },
