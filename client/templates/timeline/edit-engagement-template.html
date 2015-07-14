@@ -24,7 +24,7 @@
                       <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
                             <form id="editSingleEngagementForm" role="form">
-                                <div class="inputFields">
+                                <div class="inputFields form-group">
                                     <label for="titleInput">Hours / Week: </label>
                                     <input class="form-control" type="text" id="singleDurationInput" value="{{duration}}">
                                     <input type="hidden" id="singleEngagementID" value="{{_id}}">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="tab-pane" id="tab2">
                             <form id="editWholeEngagementForm" role="form">
-                                <div class="inputFields">
+                                <div class="inputFields form-group">
                                     <label for="startWeek">Start week (MM-YYYY)</label>
                                     <input class="form-control" type="text" id="startWeek" pattern="\d{1,2}-\d{4}" value="{{groupStartDateKWFormat}}">
                                     <label for="endWeek">End week (MM-YYYY)</label>

@@ -39,7 +39,7 @@
 
 .timeline-project-bar {
     margin: 0 !important;
-    padding: 0 !important;
+    padding-top: 6px !important;
     float: left;
     font-size: 0.8em;
     text-align: center;
