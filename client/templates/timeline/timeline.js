@@ -192,7 +192,25 @@ Template.timelineRow.helpers({
         });
         return htmlReturn;
     },
+
+
     getEmployeeLoad: function() {
-        return 42; //TODO implement me
+        var employeeID = Template.currentData()._id;
+        var startDate = Session.get("timeline.startDate");
+
+        var total = 0;
+        for(var i = 0; i < 4; i++) {
+            var queryDate = moment(startDate).add(i, "w").toDate();
+            var assignments = getEngagementsForWeek({
+                employeeId: employeeID,
+                startDate: queryDate
+            });
+
+            assignments.forEach(function(value) {
+                total += parseFloat(value.percent);
+            });
+        }
+
+        return total / 400 * 100;
     }
 });

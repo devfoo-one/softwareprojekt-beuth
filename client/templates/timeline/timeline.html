@@ -61,7 +61,7 @@
         <td class="timeline-col-employeeInfo">
             <div class="timeline-employee">
                 <span class="timeline-employee-avatar glyphicon glyphicon-user"></span>
-                {{firstName}} {{lastName}} {{> timelineEmployeeLoadBar percent=70}} <!-- TODO implement me -->
+                {{firstName}} {{lastName}} {{> timelineEmployeeLoadBar percent=getEmployeeLoad}}
             </div>
         </td>
         <td class="timeline-cell-week" data-employeeid="{{_id}}" data-weekoffset="0">{{{getProjectBars 0}}}</td>
