@@ -7,3 +7,11 @@ if (Meteor.isClient) {
         }
     });
 }
+
+// configure the login template (from the accounts package) to route
+// to homepage on logout
+Template._loginButtons.events({
+    'click #login-buttons-logout': function(ev) {
+        Router.go('/');
+    }
+});
