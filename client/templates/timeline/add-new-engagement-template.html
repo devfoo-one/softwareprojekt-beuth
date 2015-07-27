@@ -14,10 +14,10 @@
                     <form id="addEngagementForm" role="form">
                         <div class="inputFields form-group">
                             <label for="titleInput">Hours / Week: </label>
-                            <input class="form-control" type="text" id="durationInput" value="{{employee2add.workTime}}">
-                            <label for="startWeek">Start week (MM-YYYY)</label>
+                            <input class="form-control form-group" type="text" id="durationInput" value="{{employee2add.workTime}}">
+                            <label for="startWeek">Start week (WW-YYYY)</label>
                             <input class="form-control" type="text" id="startWeek" pattern="\d{1,2}-\d{4}" value="{{kw2add}}">
-                            <label for="endWeek">End week (MM-YYYY)</label>
+                            <label for="endWeek">End week (WW-YYYY)</label>
                             <input class="form-control" type="text" id="endWeek" pattern="\d{1,2}-\d{4}" value="{{kw2add}}">
                             <input type="hidden" id="projectID" value="{{project2add._id}}">
                             <input type="hidden" id="employeeID" value="{{employee2add._id}}">
