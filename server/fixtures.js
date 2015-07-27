@@ -46,13 +46,6 @@ if (Meteor.isServer) {
                 creatorId: testUserId
             });
 
-            Projects.insert({
-                title:'Vacation',
-                color: '#5CB85C',
-                shortName: 'Vacation',
-                creatorId: null
-            });
-
             // provide some default data for the employees collection
             var demoEmployee1 = Employees.insert({
                 firstName: 'Bender',
@@ -117,5 +110,22 @@ if (Meteor.isServer) {
                 duration: 20
             });
         }
+
+
+        // check if the vacation project exists
+        var vacationProjectCount = Projects.find( {
+            title: 'Vacation',
+            creatorId: null
+        } ).count();
+
+        if (vacationProjectCount === 0) {
+            Projects.insert({
+                title:'Vacation',
+                color: '#5CB85C',
+                shortName: 'Vacation',
+                creatorId: null
+            });
+        }
+
     });
 }
