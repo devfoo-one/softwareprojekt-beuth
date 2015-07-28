@@ -15,7 +15,13 @@ Template.timeline.helpers({
     },
     projects: function() {
         return Projects.find();
+    },
+    currentDateScope: function(){
+        var startDate = moment(Session.get('timeline.startDate'));
+        var endDate = moment(startDate).add(4, "weeks").subtract(1, "days");
+        return startDate.format("YYYY-MM-DD") + " - " + endDate.format("YYYY-MM-DD");
     }
+
 });
 
 /**

@@ -82,3 +82,10 @@
 #timeline-project-list .label{
     font-size: 1em;
 }
+
+#timeline-currentDateScope {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
