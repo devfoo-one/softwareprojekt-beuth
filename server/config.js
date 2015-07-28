@@ -25,10 +25,9 @@ Accounts.onCreateUser(function(options, user) {
 });
 Accounts.validateLoginAttempt(function(attempt){
     if (attempt.user && attempt.user.emails && !attempt.user.emails[0].verified ) {
-        console.log('email not verified');
+        throw new Meteor.Error(403, "Email not verified!");
 
         return false; // the login is aborted
     }
     return true;
 });
-
