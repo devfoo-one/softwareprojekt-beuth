@@ -21,6 +21,10 @@ Meteor.methods({
         // create the engagement database entry
         var engagement = _.pick(engagementAttributes,'projectId', 'employeeId', 'startDate', 'groupStartDate', 'groupEndDate', 'duration');
 
+        if (engagement.duration <= 0) {
+            throw new Meteor.Error(422, "Duration time must not be 0 or a negative value!");
+        }
+
         engagement = _.extend(engagement, {
             creatorId: user._id
         });
@@ -62,6 +66,10 @@ Meteor.methods({
 
         // pick only the attributes we need and create a engagement database entry
         var engagement = _.pick(engagementAttributes, 'projectId', 'employeeId', 'projectName', 'startDate', 'groupStartDate', 'groupEndDate', 'duration');
+
+        if (engagement.duration <= 0) {
+            throw new Meteor.Error(422, "Duration time must not be 0 or a negative value!");
+        }
 
         Engagements.update(
             { _id: engagementAttributes._id }, // query
