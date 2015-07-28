@@ -1,0 +1,38 @@
+box: kkudryavtsev/meteor
+build:
+  steps:
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) runnin:g"
+    - script:
+        name: update meteor
+        code: |-
+          meteor --version
+          meteor update
+          meteor --version
+    - script:
+        name: install / run mongoDB
+        code: |
+          echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
+          echo 'deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu precise main' | sudo tee /etc/apt/sources.list.d/nodejs.list
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv C7917B12
+          sudo apt-get update
+          sudo apt-get install build-essential nodejs mongodb-10gen curl wget libfreetype6-dev libfontconfig1-dev
+          sudo stop mongodb
+          sleep 5
+          echo 'nojournal = true' | sudo tee -a /etc/mongodb.conf
+          echo 'verbose = true' | sudo tee -a /etc/mongodb.conf
+          echo 'noprealloc = true' | sudo tee -a /etc/mongodb.conf
+          echo 'smallfiles = true' | sudo tee -a /etc/mongodb.conf
+          /bin/sh install.sh
+          sudo mkdir -p /data/db/
+          sudo chown -R mongodb:mongodb /data/
+    - script:
+        name: install laika
+        code: sudo npm install -g laika
+    - script:
+        name: run laika
+        code: laika -V
